@@ -37,27 +37,64 @@ const Header = () => {
     setOpenSubmenu(openSubmenu === index ? null : index);
   };
 
+  const menuItems = [
+    {
+      name: "Kierunki",
+      link: "/",
+      submenu: [
+        { name: "Porady", link: "/kategoria/porady" },
+        { name: "Submenu 2", link: "/kategoria/porady" },
+      ],
+    },
+    {
+      name: "Oferta",
+      link: "/",
+      submenu: [
+        { name: "Oferta 1", link: "#" },
+        { name: "Oferta 2", link: "#" },
+      ],
+    },
+    {
+      name: "Blog",
+      link: "/blog",
+      submenu: [
+        { name: "Blog 1", link: "/blog/" },
+        { name: "Blog 2", link: "/blog/" },
+      ],
+    },
+    {
+      name: "O nas",
+      link: "/",
+      submenu: [
+        { name: "O nas 1", link: "/o-nas/" },
+        { name: "O nas 2", link: "/o-nas/" },
+      ],
+    },
+  ];
+
   return (
     <header className="site-header">
       <div className="logo">
-        <img
-          src="https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/axel-travel-logo.png?v=1743012468506"
-          alt="Logo"
-        />
+        <a href="/">
+          <img
+            src="https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/axel-travel-logo.png?v=1743012468506"
+            alt="Logo"
+          />
+        </a>
       </div>
       <button className="menu-toggle" onClick={toggleMobileMenu}>
         ☰
       </button>
       <nav className={`nav-menu ${isMobileMenuOpen ? "open" : ""}`}>
         <ul className="menu">
-          {["Kierunki", "Oferta", "Blog", "O nas"].map((item, index) => (
+          {menuItems.map((item, index) => (
             <li
               key={index}
               className="menu-item"
               onMouseEnter={() => !isMobile && setOpenSubmenu(index)}
               onMouseLeave={() => !isMobile && setOpenSubmenu(null)}
             >
-              <a href="#">{item}</a>
+              <a href={item.link}>{item.name}</a>
               {isMobile && (
                 <span
                   className="submenu-toggle"
@@ -67,17 +104,16 @@ const Header = () => {
                 </span>
               )}
               <ul className={`submenu ${openSubmenu === index ? "show" : ""}`}>
-                <li>
-                  <a href="#">Submenu 1</a>
-                </li>
-                <li>
-                  <a href="#">Submenu 2</a>
-                </li>
+                {item.submenu.map((subItem, subIndex) => (
+                  <li key={subIndex}>
+                    <a href={subItem.link}>{subItem.name}</a>
+                  </li>
+                ))}
               </ul>
             </li>
           ))}
           <li>
-            <a href="#">Kontakt</a>
+            <a href="/contact">Kontakt</a>
           </li>
         </ul>
         <div className="monogram-buttons">
@@ -88,6 +124,7 @@ const Header = () => {
           ))}
         </div>
       </nav>
+
       <style jsx>{`
         .site-header {
           display: flex;

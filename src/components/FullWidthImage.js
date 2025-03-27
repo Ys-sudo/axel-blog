@@ -10,7 +10,7 @@ export default function FullWidthImage(props) {
     subheading,
     imgPosition = "top left",
   } = props;
-
+  console.log(img.isCat);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e) => {
@@ -27,9 +27,9 @@ export default function FullWidthImage(props) {
       onMouseMove={handleMouseMove}
       style={{ height }}
     >
-      {img?.url ? (
+      {img.isCat == true ? (
         <img
-          src={img}
+          src={img.url}
           style={{
             objectFit: "cover",
             objectPosition: imgPosition,
@@ -39,18 +39,23 @@ export default function FullWidthImage(props) {
           alt=""
         />
       ) : (
-        <GatsbyImage
-          image={img}
-          objectFit="cover"
-          objectPosition={imgPosition}
-          style={{ width: "100%", height: "100%" }}
-          alt=""
-          formats={["auto", "webp", "avif"]}
-        />
+        <>
+          {/*<img src={img} />>*/}
+          <GatsbyImage
+            image={img}
+            objectFit="cover"
+            objectPosition={imgPosition}
+            style={{ width: "100%", height: "100%" }}
+            alt=""
+            formats={["auto", "webp", "avif"]}
+          />
+        </>
       )}
       {(title || subheading) && (
         <div className="absolute inset-0 flex flex-col justify-center items-start px-10 text-white">
-          <span className="text-lg uppercase tracking-widest">Blog</span>
+          <span className="text-lg uppercase tracking-widest">
+            {img.isCat == true ? "Blog | Kategoria" : "Blog"}
+          </span>
           {title && (
             <h1
               className="text-2xl md:text-4xl font-extrabold"

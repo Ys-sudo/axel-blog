@@ -1,9 +1,9 @@
-const _ = require('lodash')
-const path = require('path')
-const { createFilePath } = require('gatsby-source-filesystem')
+const _ = require("lodash");
+const path = require("path");
+const { createFilePath } = require("gatsby-source-filesystem");
 
 exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
 
   return graphql(`
     {
@@ -16,6 +16,7 @@ exports.createPages = ({ actions, graphql }) => {
             }
             frontmatter {
               tags
+              category
               templateKey
             }
           }
@@ -24,41 +25,38 @@ exports.createPages = ({ actions, graphql }) => {
     }
   `).then((result) => {
     if (result.errors) {
-      result.errors.forEach((e) => console.error(e.toString()))
-      return Promise.reject(result.errors)
+      result.errors.forEach((e) => console.error(e.toString()));
+      return Promise.reject(result.errors);
     }
 
-    const posts = result.data.allMarkdownRemark.edges
+    const posts = result.data.allMarkdownRemark.edges;
 
+    // Create individual post pages
     posts.forEach((edge) => {
-      const id = edge.node.id
+      const id = edge.node.id;
       createPage({
         path: edge.node.fields.slug,
         tags: edge.node.frontmatter.tags,
         component: path.resolve(
           `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
         ),
-        // additional data can be passed via context
         context: {
           id,
         },
-      })
-    })
+      });
+    });
 
-    // Tag pages:
-    let tags = []
-    // Iterate through each post, putting all found tags into `tags`
+    // Create tag pages
+    let tags = [];
     posts.forEach((edge) => {
       if (_.get(edge, `node.frontmatter.tags`)) {
-        tags = tags.concat(edge.node.frontmatter.tags)
+        tags = tags.concat(edge.node.frontmatter.tags);
       }
-    })
-    // Eliminate duplicate tags
-    tags = _.uniq(tags)
+    });
+    tags = _.uniq(tags);
 
-    // Make tag pages
     tags.forEach((tag) => {
-      const tagPath = `/tags/${_.kebabCase(tag)}/`
+      const tagPath = `/tags/${_.kebabCase(tag)}/`;
 
       createPage({
         path: tagPath,
@@ -66,20 +64,59 @@ exports.createPages = ({ actions, graphql }) => {
         context: {
           tag,
         },
-      })
-    })
-  })
-}
+      });
+    });
+
+    // Create category pages
+    let categories = [];
+    posts.forEach((edge) => {
+      if (_.get(edge, `node.frontmatter.category`)) {
+        categories = categories.concat(edge.node.frontmatter.category);
+      }
+    });
+    categories = _.uniq(categories);
+
+    categories.forEach((category) => {
+      const categoryPath = `/kategoria/${_.kebabCase(category)}/`;
+
+      createPage({
+        path: categoryPath,
+        component: path.resolve(`src/templates/category.js`),
+        context: {
+          category,
+        },
+      });
+
+      // Filter the posts for this category
+      const categoryPosts = posts.filter((post) => {
+        return (
+          post.node.frontmatter.category &&
+          post.node.frontmatter.category.includes(category)
+        );
+      });
+
+      // Create the category page with the relevant posts
+      createPage({
+        path: categoryPath,
+        component: path.resolve(`src/templates/category.js`),
+        context: {
+          category,
+          categoryPosts, // Pass the filtered posts to the context
+        },
+      });
+    });
+  });
+};
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+  const { createNodeField } = actions;
 
   if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
+    const value = createFilePath({ node, getNode });
     createNodeField({
       name: `slug`,
       node,
       value,
-    })
+    });
   }
-}
+};
