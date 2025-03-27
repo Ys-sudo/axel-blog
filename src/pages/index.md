@@ -33,11 +33,11 @@ main:
     Serwer na razie nie działa jutro dzwonimy do merlina
   image1:
     alt: A close-up of a paper filter filled with ground placeholdere
-    image: /img/peru.jpg.jpg
+    image: /img/peru.jpg
   image2:
     alt: A green cup of a placeholdere on a wooden table
-    image: /img/peru.jpg.jpg
+    image: /img/peru.jpg
   image3:
     alt: placeholdere beans
-    image: /img/peru.jpg.jpg
+    image: /img/peru.jpg
 ---
