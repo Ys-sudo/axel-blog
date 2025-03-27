@@ -4,6 +4,8 @@
   "version": "1.1.3",
   "author": "Austin Green",
   "dependencies": {
+    "@tailwindcss/postcss": "^4.0.17",
+    "autoprefixer": "^10.4.21",
     "bulma": "^0.9.0",
     "decap-cms-app": "^3.0.12",
     "decap-cms-media-library-cloudinary": "^3.0.1",
@@ -14,7 +16,6 @@
     "gatsby-plugin-netlify": "^5.0.0",
     "gatsby-plugin-purgecss": "^6.0.0",
     "gatsby-plugin-react-helmet": "^5.0.0",
-    "gatsby-plugin-sass": "^5.0.0",
     "gatsby-plugin-sharp": "^4.0.0",
     "gatsby-remark-copy-linked-files": "^5.0.0",
     "gatsby-remark-images": "^6.0.0",
@@ -24,11 +25,13 @@
     "gatsby-transformer-sharp": "^4.0.0",
     "lodash": "^4.17.15",
     "lodash-webpack-plugin": "^0.11.4",
+    "postcss": "^8.5.3",
     "prop-types": "^15.6.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-helmet": "^6.0.0",
     "sass": "^1.43.2",
+    "tailwindcss": "^3.4.17",
     "uuid": "^8.0.0"
   },
   "keywords": [

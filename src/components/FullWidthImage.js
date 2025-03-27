@@ -4,7 +4,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 
 export default function FullWidthImage(props) {
   const {
-    height = 400,
+    height = 600,
     img,
     title,
     subheading,
@@ -58,19 +58,18 @@ export default function FullWidthImage(props) {
               // By using the same grid area for both, they are stacked on top of each other
               gridArea: "1/1",
               position: "relative",
+              paddingLeft: "10%",
               // This centers the other elements inside the hero component
-              placeItems: "center",
+              placeItems: "left",
               display: "grid",
             }}
           >
             {/* Any content here will be centered in the component */}
+            <span style={{ color: "white" }}>Blog</span>
             {title && (
               <h1
                 className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
                 style={{
-                  boxShadow:
-                    "rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px",
-                  backgroundColor: "rgb(255, 68, 0)",
                   color: "white",
                   lineHeight: "1",
                   padding: "0.25em",
@@ -83,9 +82,6 @@ export default function FullWidthImage(props) {
               <h3
                 className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
                 style={{
-                  boxShadow:
-                    "rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px",
-                  backgroundColor: "rgb(255, 68, 0)",
                   color: "white",
                   lineHeight: "1",
                   padding: "0.25rem",
