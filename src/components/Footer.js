@@ -15,17 +15,17 @@ const Footer = () => {
           </a>
           <ul className="space-y-2">
             {[
-              "Blog",
-              "O nas",
-              "Kontakt",
-              "Radar lotów",
-              "Ubezpieczenia",
-              "Globus podróżnika",
-              "City break",
+              { name: "Blog", url: "/" },
+              { name: "O nas", url: "/about" },
+              { name: "Kontakt", url: "/kontakt" },
+              { name: "Radar lotów", url: "#" },
+              { name: "Ubezpieczenia", url: "#" },
+              { name: "Globus podróżnika", url: "https://axel-travel.pro" },
+              { name: "City break", url: "https://axel-travel.pro" },
             ].map((item) => (
-              <li key={item}>
-                <a href="#" className="hover:underline">
-                  {item}
+              <li key={item.name}>
+                <a href={item.url} className="hover:underline">
+                  {item.name}
                 </a>
               </li>
             ))}

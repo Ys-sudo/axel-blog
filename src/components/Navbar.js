@@ -64,7 +64,7 @@ const Header = () => {
     },
     {
       name: "O nas",
-      link: "/",
+      link: "/about",
       submenu: [
         { name: "O nas 1", link: "/o-nas/" },
         { name: "O nas 2", link: "/o-nas/" },
@@ -113,7 +113,7 @@ const Header = () => {
             </li>
           ))}
           <li>
-            <a href="/contact">Kontakt</a>
+            <a href="/kontakt">Kontakt</a>
           </li>
         </ul>
         <div className="monogram-buttons">
