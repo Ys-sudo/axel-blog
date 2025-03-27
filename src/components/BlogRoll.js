@@ -1,26 +1,27 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Link, graphql, StaticQuery } from 'gatsby'
-import PreviewCompatibleImage from './PreviewCompatibleImage'
-
+import React from "react";
+import PropTypes from "prop-types";
+import { Link, graphql, StaticQuery } from "gatsby";
+import PreviewCompatibleImage from "./PreviewCompatibleImage";
 
 const BlogRollTemplate = (props) => {
-  
   const { edges: posts } = props.data.allMarkdownRemark;
 
   return (
-    <div className="columns is-multiline">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
       {posts &&
         posts.map(({ node: post }) => (
-          <div className="is-parent column is-6" key={post.id}>
+          <div
+            className="bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl hover:translate-y-2"
+            key={post.id}
+          >
             <article
-              className={`blog-list-item tile is-child box notification ${
-                post.frontmatter.featuredpost ? 'is-featured' : ''
-              }`}
+              className={`p-6 ${
+                post.frontmatter.featuredpost ? "border-l-4 border-primary" : ""
+              } bg-white dark:bg-gray-900 transition-all rounded-xl`}
             >
               <header>
                 {post?.frontmatter?.featuredimage && (
-                  <div className="featured-thumbnail">
+                  <div className="relative w-full h-48 mb-6 overflow-hidden rounded-lg shadow-md">
                     <PreviewCompatibleImage
                       imageInfo={{
                         image: post.frontmatter.featuredimage,
@@ -34,25 +35,28 @@ const BlogRollTemplate = (props) => {
                       }}
                     />
                   </div>
-                ) }
-                <p className="post-meta">
+                )}
+                <p className="text-gray-800 dark:text-white">
                   <Link
-                    className="title has-text-primary is-size-4"
+                    className="text-2xl font-bold text-primary dark:text-primary-light hover:text-primary-dark transition-all"
                     to={post.fields.slug}
                   >
                     {post.frontmatter.title}
                   </Link>
-                  <span> &bull; </span>
-                  <span className="subtitle is-size-5 is-block">
+                  <span className="mx-2">•</span>
+                  <span className="text-sm text-gray-600 dark:text-gray-400">
                     {post.frontmatter.date}
                   </span>
                 </p>
               </header>
-              <p>
+              <p className="text-gray-700 dark:text-gray-300 mt-4 text-base leading-relaxed">
                 {post.excerpt}
                 <br />
                 <br />
-                <Link className="button" to={post.fields.slug}>
+                <Link
+                  className="inline-block text-primary dark:text-primary-light hover:text-primary-dark font-medium transition-all"
+                  to={post.fields.slug}
+                >
                   Keep Reading →
                 </Link>
               </p>
@@ -60,17 +64,16 @@ const BlogRollTemplate = (props) => {
           </div>
         ))}
     </div>
-  )
-}
+  );
+};
 
-BlogRoll.propTypes = {
+BlogRollTemplate.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
       edges: PropTypes.array,
     }),
   }),
-}
-
+};
 
 export default function BlogRoll() {
   return (
@@ -96,11 +99,10 @@ export default function BlogRoll() {
                   featuredimage {
                     childImageSharp {
                       gatsbyImageData(
-                        width: 120
+                        width: 620
                         quality: 100
                         layout: CONSTRAINED
                       )
-
                     }
                   }
                 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { GatsbyImage } from "gatsby-plugin-image";
 
@@ -11,90 +11,75 @@ export default function FullWidthImage(props) {
     imgPosition = "top left",
   } = props;
 
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e) => {
+    const { clientX, clientY } = e;
+    setMousePos({
+      x: (clientX / window.innerWidth - 0.5) * 20,
+      y: (clientY / window.innerHeight - 0.5) * 20,
+    });
+  };
+
   return (
-    <React.Fragment>
-      <div
-        className="margin-top-0"
-        style={{
-          display: "grid",
-          alignItems: "center",
-        }}
-      >
-        {img?.url ? (
-          <img
-            src={img}
-            objectFit={"cover"}
-            objectPosition={imgPosition}
-            style={{
-              gridArea: "1/1",
-              // You can set a maximum height for the image, if you wish.
-              height: height,
-              width: "100%",
-            }}
-            // This is a presentational image, so the alt should be an empty string
-            alt=""
-          />
-        ) : (
-          <GatsbyImage
-            image={img}
-            objectFit={"cover"}
-            objectPosition={imgPosition}
-            style={{
-              gridArea: "1/1",
-              // You can set a maximum height for the image, if you wish.
-              maxHeight: height,
-            }}
-            layout="fullWidth"
-            // You can optionally force an aspect ratio for the generated image
-            aspectratio={3 / 1}
-            // This is a presentational image, so the alt should be an empty string
-            alt=""
-            formats={["auto", "webp", "avif"]}
-          />
-        )}
-        {(title || subheading) && (
-          <div
-            style={{
-              // By using the same grid area for both, they are stacked on top of each other
-              gridArea: "1/1",
-              position: "relative",
-              paddingLeft: "10%",
-              // This centers the other elements inside the hero component
-              placeItems: "left",
-              display: "grid",
-            }}
-          >
-            {/* Any content here will be centered in the component */}
-            <span style={{ color: "white" }}>Blog</span>
-            {title && (
-              <h1
-                className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
-                style={{
-                  color: "white",
-                  lineHeight: "1",
-                  padding: "0.25em",
-                }}
-              >
-                {title}
-              </h1>
-            )}
-            {subheading && (
-              <h3
-                className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
-                style={{
-                  color: "white",
-                  lineHeight: "1",
-                  padding: "0.25rem",
-                  marginTop: "0.5rem",
-                }}
-              >
-                {subheading}
-              </h3>
-            )}
-          </div>
-        )}
-      </div>
-    </React.Fragment>
+    <div
+      className="relative overflow-hidden"
+      onMouseMove={handleMouseMove}
+      style={{ height }}
+    >
+      {img?.url ? (
+        <img
+          src={img}
+          style={{
+            objectFit: "cover",
+            objectPosition: imgPosition,
+            width: "100%",
+            height: "100%",
+          }}
+          alt=""
+        />
+      ) : (
+        <GatsbyImage
+          image={img}
+          objectFit="cover"
+          objectPosition={imgPosition}
+          style={{ width: "100%", height: "100%" }}
+          alt=""
+          formats={["auto", "webp", "avif"]}
+        />
+      )}
+      {(title || subheading) && (
+        <div className="absolute inset-0 flex flex-col justify-center items-start px-10 text-white">
+          <span className="text-lg uppercase tracking-widest">Blog</span>
+          {title && (
+            <h1
+              className="text-2xl md:text-4xl font-extrabold"
+              style={{
+                transform: `translate(${mousePos.x}px, ${
+                  mousePos.y
+                }px) rotate(${mousePos.x / 10}deg)`,
+                transition: "transform 0.1s ease-out",
+              }}
+            >
+              {title}
+            </h1>
+          )}
+          {subheading && (
+            <h3
+              className="text-xl md:text-2xl font-semibold mt-2"
+              style={{
+                transform: `translate(${mousePos.x / 2}px, ${
+                  mousePos.y / 2
+                }px)`,
+                transition: "transform 0.1s ease-out",
+              }}
+            >
+              {subheading}
+            </h3>
+          )}
+        </div>
+      )}
+    </div>
   );
 }
 

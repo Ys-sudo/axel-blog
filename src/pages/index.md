@@ -12,16 +12,16 @@ description: >-
   Poznaj szczegóły dotyczące podrózy z naszego biura wycieczek!
 intro:
   blurbs:
-    - image: /img/bagaz-dokumenty-podroze-porady.jpeg
+    - image: /img/og-img.jpg
       text: >
         Bagaz i dokumenty
-    - image: /img/porady-podroze-blog.jpeg
+    - image: /img/og-img.jpg
       text: >
         Porady dla podrózujacych
-    - image: /img/przed-podroza-kategoria-blog.jpeg
+    - image: /img/og-img.jpg
       text: >
         Przydatne informacje przed podroza zagranice
-    - image: /img/reportaze-z-podrozy-blog.jpg
+    - image: /img/og-img.jpg
       text: >
         Reportaze i relacje z podrozy do znanych kurortow i krajow.
   heading: Co więcej mozemy Ci zaoferowac?
@@ -32,12 +32,12 @@ main:
   description: >
     Serwer na razie nie działa jutro dzwonimy do merlina
   image1:
-    alt: A close-up of a paper filter filled with ground coffee
-    image: /img/products-grid3.jpg
+    alt: A close-up of a paper filter filled with ground placeholdere
+    image: /img/og-img.jpg
   image2:
-    alt: A green cup of a coffee on a wooden table
-    image: /img/products-grid2.jpg
+    alt: A green cup of a placeholdere on a wooden table
+    image: /img/og-img.jpg
   image3:
-    alt: Coffee beans
-    image: /img/products-grid1.jpg
+    alt: placeholdere beans
+    image: /img/og-img.jpg
 ---

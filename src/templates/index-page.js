@@ -7,8 +7,8 @@ import Layout from "../components/Layout";
 import Features from "../components/Features";
 import BlogRoll from "../components/BlogRoll";
 import FullWidthImage from "../components/FullWidthImage";
+import BlogSection from "../components/BlogSection";
 
-// eslint-disable-next-line
 export const IndexPageTemplate = ({
   image,
   title,
@@ -21,46 +21,44 @@ export const IndexPageTemplate = ({
   const heroImage = getImage(image) || image;
 
   return (
-    <div>
+    <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
       <FullWidthImage img={heroImage} title={title} subheading={subheading} />
-      <section className="section section--gradient">
-        <div className="container">
-          <div className="section">
-            <div className="columns">
-              <div className="column is-10 is-offset-1">
-                <div className="content">
-                  <div className="content">
-                    <div className="tile">
-                      <h1 className="title">{mainpitch.title}</h1>
-                    </div>
-                    <div className="tile">
-                      <h3 className="subtitle">{mainpitch.description}</h3>
-                    </div>
-                  </div>
-                  <div className="columns">
-                    <div className="column is-12">
-                      <h3 className="has-text-weight-semibold is-size-2">
-                        {heading}
-                      </h3>
-                      <p>{description}</p>
-                    </div>
-                  </div>
-                  <Features gridItems={intro.blurbs} />
-                  <div className="column is-12">
-                    <h3 className="has-text-weight-semibold is-size-2">
-                      Najnowsze artykuły
-                    </h3>
-                    <BlogRoll />
-                    <div className="column is-12 has-text-centered">
-                      <Link className="btn" to="/blog">
-                        Sprawdź wszystkie
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      <BlogSection />
+      <section className="py-16 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center">
+            <h1 className="text-lg font-semibold uppercase tracking-wide text-gray-600 dark:text-gray-300">
+              {mainpitch.title}
+            </h1>
+            <h2 className="text-5xl font-bold mt-4 mb-6 text-gray-900 dark:text-gray-100">
+              {mainpitch.description}
+            </h2>
+          </div>
+          <div className="text-center mt-8">
+            <h3 className="text-4xl font-bold text-blue-600 dark:text-blue-400">
+              {heading}
+            </h3>
+            <p className="text-lg text-gray-700 dark:text-gray-300 mt-4">
+              {description}
+            </p>
+          </div>
+
+          <div className="mt-16">
+            <h3 className="text-4xl font-bold text-gray-900 dark:text-gray-100 text-center mb-8">
+              Najnowsze artykuły
+            </h3>
+            <BlogRoll />
+            <div className="flex justify-center mt-8">
+              <Link
+                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105"
+                to="/blog"
+              >
+                Sprawdź wszystkie
+              </Link>
             </div>
           </div>
+
+          <Features gridItems={intro.blurbs} />
         </div>
       </section>
     </div>

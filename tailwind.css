@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind typography;
+
+* {
+  transition-duration: 1.75s !important;
+}

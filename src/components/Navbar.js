@@ -1,21 +1,218 @@
-import React, { useState } from "react";
-import { Link } from "gatsby";
-import github from "../img/github-icon.svg";
-import logo from "../img/logo.svg";
+import * as React from "react";
+import { useState, useEffect } from "react";
 
-const Navbar = () => {
-  const [isActive, setIsActive] = useState(false);
+const Header = () => {
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openSubmenu, setOpenSubmenu] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (
+        !event.target.closest(".nav-menu") &&
+        !event.target.closest(".menu-toggle")
+      ) {
+        setMobileMenuOpen(false);
+        setOpenSubmenu(null);
+      }
+    };
+    document.addEventListener("click", handleOutsideClick);
+    return () => document.removeEventListener("click", handleOutsideClick);
+  }, []);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const toggleSubmenu = (index) => {
+    setOpenSubmenu(openSubmenu === index ? null : index);
+  };
 
   return (
-    <nav
-      className="navbar"
-      role="navigation"
-      aria-label="main-navigation"
-      style={{ background: "black", color: "white" }}
-    >
-      Navbar
-    </nav>
+    <header className="site-header">
+      <div className="logo">
+        <img
+          src="https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/axel-travel-logo.png?v=1743012468506"
+          alt="Logo"
+        />
+      </div>
+      <button className="menu-toggle" onClick={toggleMobileMenu}>
+        ☰
+      </button>
+      <nav className={`nav-menu ${isMobileMenuOpen ? "open" : ""}`}>
+        <ul className="menu">
+          {["Kierunki", "Oferta", "Blog", "O nas"].map((item, index) => (
+            <li
+              key={index}
+              className="menu-item"
+              onMouseEnter={() => !isMobile && setOpenSubmenu(index)}
+              onMouseLeave={() => !isMobile && setOpenSubmenu(null)}
+            >
+              <a href="#">{item}</a>
+              {isMobile && (
+                <span
+                  className="submenu-toggle"
+                  onClick={() => toggleSubmenu(index)}
+                >
+                  ▼
+                </span>
+              )}
+              <ul className={`submenu ${openSubmenu === index ? "show" : ""}`}>
+                <li>
+                  <a href="#">Submenu 1</a>
+                </li>
+                <li>
+                  <a href="#">Submenu 2</a>
+                </li>
+              </ul>
+            </li>
+          ))}
+          <li>
+            <a href="#">Kontakt</a>
+          </li>
+        </ul>
+        <div className="monogram-buttons">
+          {["G", "S", "T", "M"].map((letter, index) => (
+            <div key={index} className="monogram-button">
+              {letter}
+            </div>
+          ))}
+        </div>
+      </nav>
+      <style jsx>{`
+        .site-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 15px 30px;
+          background-color: white;
+          position: fixed;
+          width: 100%;
+          top: 0;
+          left: 0;
+          z-index: 1000;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .logo img {
+          height: 35px;
+        }
+        .nav-menu {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+        }
+        .menu {
+          list-style: none;
+          display: flex;
+          gap: 20px;
+        }
+        .menu li {
+          position: relative;
+        }
+        .menu li a {
+          text-decoration: none;
+          color: black;
+          font-size: 16px;
+          padding: 10px;
+          display: block;
+        }
+        .submenu {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          background-color: white;
+          list-style: none;
+          min-width: 180px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          padding: 10px 0;
+        }
+        .submenu.show {
+          display: block;
+        }
+        .submenu li a {
+          color: black;
+          padding: 8px 20px;
+          display: block;
+        }
+        .menu-toggle {
+          display: none;
+          font-size: 24px;
+          background: none;
+          border: none;
+          cursor: pointer;
+        }
+        .submenu-toggle {
+          display: none;
+          cursor: pointer;
+          font-size: 18px;
+          padding: 10px;
+        }
+        .monogram-buttons {
+          display: flex;
+          gap: 10px;
+        }
+        .monogram-button {
+          width: 40px;
+          height: 40px;
+          border: 1px solid #ddd;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 18px;
+          font-weight: bold;
+          cursor: pointer;
+        }
+        @media (max-width: 768px) {
+          .nav-menu {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+          }
+          .menu {
+            flex-direction: column;
+          }
+          .menu li {
+            text-align: left;
+            position: relative;
+          }
+          .menu-toggle {
+            display: block;
+          }
+          .submenu {
+            position: static;
+            display: none;
+            box-shadow: none;
+          }
+          .submenu.show {
+            display: block;
+          }
+          .submenu-toggle {
+            display: inline-block;
+            float: right;
+          }
+          .nav-menu.open {
+            display: flex;
+          }
+        }
+      `}</style>
+    </header>
   );
 };
 
-export default Navbar;
+export default Header;
