@@ -12,7 +12,6 @@ media_folder: static/img
 public_folder: /img
 site_url: https://axel-travel.com
 display_url: https://axel-travel.com
-logo_url: /icons/artopen-logo.svg
 publish_mode: editorial_workflow
 
 collections:
