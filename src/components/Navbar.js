@@ -72,7 +72,7 @@ const Header = () => {
 
       <div className="site-header">
         <div className="logo">
-          <a href="/">
+          <a href="https://axel-travel.pl/">
             <img
               src="https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/axel-travel-logo.png?v=1743012468506"
               alt="Logo"
