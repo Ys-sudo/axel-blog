@@ -1,253 +1,375 @@
-import * as React from "react";
-import { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const Header = () => {
-  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [openSubmenu, setOpenSubmenu] = useState(null);
-  const [isMobile, setIsMobile] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [submenusVisible, setSubmenusVisible] = useState({});
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
-    const handleOutsideClick = (event) => {
-      if (
-        !event.target.closest(".nav-menu") &&
-        !event.target.closest(".menu-toggle")
-      ) {
-        setMobileMenuOpen(false);
-        setOpenSubmenu(null);
-      }
-    };
-    document.addEventListener("click", handleOutsideClick);
-    return () => document.removeEventListener("click", handleOutsideClick);
-  }, []);
-
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!isMobileMenuOpen);
+  // Toggle main menu (for mobile)
+  const handleMenuToggle = () => {
+    setMenuOpen(!menuOpen);
   };
 
-  const toggleSubmenu = (index) => {
-    setOpenSubmenu(openSubmenu === index ? null : index);
+  // Toggle submenus (for mobile view)
+  const handleSubmenuToggle = (index) => {
+    setSubmenusVisible((prevState) => ({
+      ...prevState,
+      [index]: !prevState[index],
+    }));
   };
 
-  const menuItems = [
-    {
-      name: "Kierunki",
-      link: "/",
-      submenu: [
-        { name: "Porady", link: "/kategoria/porady" },
-        { name: "Submenu 2", link: "/kategoria/porady" },
-      ],
-    },
-    {
-      name: "Oferta",
-      link: "/",
-      submenu: [
-        { name: "Oferta 1", link: "#" },
-        { name: "Oferta 2", link: "#" },
-      ],
-    },
-    {
-      name: "Blog",
-      link: "/blog",
-      submenu: [
-        { name: "Blog 1", link: "/blog/" },
-        { name: "Blog 2", link: "/blog/" },
-      ],
-    },
-    {
-      name: "O nas",
-      link: "/about",
-      submenu: [
-        { name: "O nas 1", link: "/o-nas/" },
-        { name: "O nas 2", link: "/o-nas/" },
-      ],
-    },
-  ];
+  // Close submenus when clicking outside
+  const handleClickOutside = (event) => {
+    if (
+      !event.target.closest(".nav-menu") &&
+      !event.target.closest(".menu-toggle")
+    ) {
+      setMenuOpen(false);
+      setSubmenusVisible({});
+    }
+  };
+
+  // Handle submenu hover (desktop)
+  const handleMouseEnter = (index) => {
+    setSubmenusVisible((prevState) => ({
+      ...prevState,
+      [index]: true,
+    }));
+  };
+
+  const handleMouseLeave = (index) => {
+    setSubmenusVisible((prevState) => ({
+      ...prevState,
+      [index]: false,
+    }));
+  };
+
+  // Listen for clicks outside (for closing the menu and submenus)
+  React.useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   return (
-    <header className="site-header">
-      <div className="logo">
-        <a href="/">
-          <img
-            src="https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/axel-travel-logo.png?v=1743012468506"
-            alt="Logo"
-          />
-        </a>
+    <header>
+      <div
+        style={{
+          minHeight: "20px",
+          width: "100%",
+          background: "blue",
+          position: "fixed",
+          display: "flex",
+          justifyContent: "center",
+          top: "0",
+          zIndex: 1000,
+        }}
+      >
+        <p style={{ color: "white", fontSize: "12px" }}>
+          Axel Travel - Biuro podróży z ponad 30 letnią tradycją
+        </p>
       </div>
-      <button className="menu-toggle" onClick={toggleMobileMenu}>
-        ☰
-      </button>
-      <nav className={`nav-menu ${isMobileMenuOpen ? "open" : ""}`}>
-        <ul className="menu">
-          {menuItems.map((item, index) => (
-            <li
-              key={index}
-              className="menu-item"
-              onMouseEnter={() => !isMobile && setOpenSubmenu(index)}
-              onMouseLeave={() => !isMobile && setOpenSubmenu(null)}
-            >
-              <a href={item.link}>{item.name}</a>
-              {isMobile && (
-                <span
-                  className="submenu-toggle"
-                  onClick={() => toggleSubmenu(index)}
-                >
-                  ▼
-                </span>
-              )}
-              <ul className={`submenu ${openSubmenu === index ? "show" : ""}`}>
-                {item.submenu.map((subItem, subIndex) => (
-                  <li key={subIndex}>
-                    <a href={subItem.link}>{subItem.name}</a>
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))}
-          <li>
-            <a href="/kontakt">Kontakt</a>
-          </li>
-        </ul>
-        <div className="monogram-buttons">
-          {["G", "S", "T", "M"].map((letter, index) => (
-            <div key={index} className="monogram-button">
-              {letter}
-            </div>
-          ))}
-        </div>
-      </nav>
 
-      <style jsx>{`
-        .site-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 15px 30px;
-          background-color: white;
-          position: fixed;
-          width: 100%;
-          top: 0;
-          left: 0;
-          z-index: 1000;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .logo img {
-          height: 35px;
-        }
-        .nav-menu {
-          display: flex;
-          align-items: center;
-          gap: 20px;
-        }
-        .menu {
-          list-style: none;
-          display: flex;
-          gap: 20px;
-        }
-        .menu li {
-          position: relative;
-        }
-        .menu li a {
-          text-decoration: none;
-          color: black;
-          font-size: 16px;
-          padding: 10px;
-          display: block;
-        }
-        .submenu {
-          display: none;
-          position: absolute;
-          top: 100%;
-          left: 0;
-          background-color: white;
-          list-style: none;
-          min-width: 180px;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          padding: 10px 0;
-        }
-        .submenu.show {
-          display: block;
-        }
-        .submenu li a {
-          color: black;
-          padding: 8px 20px;
-          display: block;
-        }
-        .menu-toggle {
-          display: none;
-          font-size: 24px;
-          background: none;
-          border: none;
-          cursor: pointer;
-        }
-        .submenu-toggle {
-          display: none;
-          cursor: pointer;
-          font-size: 18px;
-          padding: 10px;
-        }
-        .monogram-buttons {
-          display: flex;
-          gap: 10px;
-        }
-        .monogram-button {
-          width: 40px;
-          height: 40px;
-          border: 1px solid #ddd;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          font-size: 18px;
-          font-weight: bold;
-          cursor: pointer;
-        }
-        @media (max-width: 768px) {
-          .nav-menu {
-            display: none;
-            flex-direction: column;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 10px 0;
-          }
-          .menu {
-            flex-direction: column;
-          }
-          .menu li {
-            text-align: left;
-            position: relative;
-          }
-          .menu-toggle {
-            display: block;
-          }
-          .submenu {
-            position: static;
-            display: none;
-            box-shadow: none;
-          }
-          .submenu.show {
-            display: block;
-          }
-          .submenu-toggle {
-            display: inline-block;
-            float: right;
-          }
-          .nav-menu.open {
-            display: flex;
-          }
-        }
-      `}</style>
+      <div className="site-header">
+        <div className="logo">
+          <a href="/">
+            <img
+              src="https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/axel-travel-logo.png?v=1743012468506"
+              alt="Logo"
+            />
+          </a>
+        </div>
+
+        <button className="menu-toggle" onClick={handleMenuToggle}>
+          ☰
+        </button>
+
+        <nav className={`nav-menu ${menuOpen ? "open" : ""}`}>
+          <ul className="menu">
+            <li
+              onMouseEnter={() => handleMouseEnter(0)}
+              onMouseLeave={() => handleMouseLeave(0)}
+            >
+              <a href="https://axel-travel.pl/kierunki/">Kierunki</a>
+              <span
+                className="submenu-toggle"
+                onClick={() => handleSubmenuToggle(0)}
+              >
+                ▼
+              </span>
+              <div className={`submenu ${submenusVisible[0] ? "show" : ""}`}>
+                <ul>
+                  <li>
+                    <strong>Popularne</strong>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/turcja/">Turcja</a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/grecja/">Grecja</a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/hiszpania/">Hiszpania</a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/albania/">Albania</a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/egipt/">Egipt</a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/tunezja/">Tunezja</a>
+                  </li>
+                </ul>
+                <ul>
+                  <li>
+                    <strong>Polecane</strong>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/wyspy-kanaryjskie/">
+                      Wyspy Kanaryjskie
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/madera/">Madera</a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/malta/">Malta</a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/cypr/">Cypr</a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/wlochy/">Włochy</a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/bulgaria/">Bułgaria</a>
+                  </li>
+                </ul>
+                <ul>
+                  <li>
+                    <strong>Egzotyka</strong>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/tajlandia/">Tajlandia</a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/wietnam/">Wietnam</a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/malezja/">Malezja</a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/meksyk/">Meksyk</a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/dominikana/">Dominikana</a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/oman/">Oman</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li
+              onMouseEnter={() => handleMouseEnter(1)}
+              onMouseLeave={() => handleMouseLeave(1)}
+            >
+              <a href="https://axel-travel.pl/oferta/">Oferta</a>
+              <span
+                className="submenu-toggle"
+                onClick={() => handleSubmenuToggle(1)}
+              >
+                ▼
+              </span>
+              <div className={`submenu ${submenusVisible[1] ? "show" : ""}`}>
+                <ul>
+                  <li>
+                    <a href="https://axel-travel.pl/all-inclusive/">
+                      All inclusive
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/last-minute/">
+                      Last minute
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/wycieczki-objazdowe/">
+                      Wycieczki objazdowe
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/wakacje-dla-rodzin/">
+                      Wakacje dla rodzin
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/romantyczne-wakacje/">
+                      Romantyczne wakacje
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/city-break/">City Break</a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/egzotyka/">Egzotyka</a>
+                  </li>
+                </ul>
+                <ul>
+                  <li>
+                    <a href="https://axel-travel.pl/hotele-dla-doroslych/">
+                      Hotele dla dorosłych
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/dla-singli/">Dla singli</a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/obozy-mlodziezowe/">
+                      Obozy młodzieżowe
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/wakacje-nad-polskim-morzem/">
+                      Polskie morze
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/dojazd-wlasny/">
+                      Dojazd własny
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/zima/">Zima</a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/narty-w-gorach/">
+                      Narty w górach
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li
+              onMouseEnter={() => handleMouseEnter(2)}
+              onMouseLeave={() => handleMouseLeave(2)}
+            >
+              <a href="/">Blog</a>
+              <span
+                className="submenu-toggle"
+                onClick={() => handleSubmenuToggle(2)}
+              >
+                ▼
+              </span>
+              <div className={`submenu ${submenusVisible[2] ? "show" : ""}`}>
+                <ul>
+                  <li>
+                    <a href="https://axel-travel.com/kategoria/porady/">
+                      Porady
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.com/kategoria/bagaz-i-dokumenty/">
+                      Bagaż i dokumenty
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.com/kategoria/reportaze-z-podrozy/">
+                      Reportaże z podróży
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.com/kategoria/przed-podroza/">
+                      Przed podróżą
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li
+              onMouseEnter={() => handleMouseEnter(2)}
+              onMouseLeave={() => handleMouseLeave(2)}
+            >
+              <a href="https://axel-travel.pl/o-nas/">O nas</a>
+              <span
+                className="submenu-toggle"
+                onClick={() => handleSubmenuToggle(2)}
+              >
+                ▼
+              </span>
+              <div className={`submenu ${submenusVisible[2] ? "show" : ""}`}>
+                <ul>
+                  <li>
+                    <a href="https://axel-travel.pl/o-nas/#ubezpieczenia">
+                      Ubezpieczenia
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/o-nas/#wyroznienia">
+                      Wyróżnienia
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a href="/kontakt/">Kontakt</a>
+            </li>
+          </ul>
+
+          <div className="monogram-buttons">
+            <a
+              href="https://axel-travel.pro"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="monogram-button">
+                <img
+                  width="15"
+                  height="15"
+                  src="https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/globe.svg?v=1743502353565"
+                  alt="Globe"
+                />
+              </div>
+            </a>
+            <a
+              href="https://www.flightradar24.com/51.10,17.03/6"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="monogram-button">
+                <img
+                  width="15"
+                  height="15"
+                  src="https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/plane.svg?v=1743502350085"
+                  alt="Plane"
+                />
+              </div>
+            </a>
+            <a href="tel:+48 76 846 67 66">
+              <div className="monogram-button">
+                <img
+                  width="15"
+                  height="15"
+                  src="https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/mobile.svg?v=1743502347151"
+                  alt="Phone"
+                />
+              </div>
+            </a>
+            <a href="mailto:biuro1@axel-travel.pl">
+              <div className="monogram-button">
+                <img
+                  width="15"
+                  height="15"
+                  src="https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/e-mail.svg?v=1743502339789"
+                  alt="Email"
+                />
+              </div>
+            </a>
+          </div>
+        </nav>
+      </div>
     </header>
   );
 };
