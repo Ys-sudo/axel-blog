@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "./Footer.css"; // Ensure to create the accompanying CSS file
 
 const Footer = () => {
   useEffect(() => {
@@ -45,7 +44,7 @@ const Footer = () => {
                 <a href="https://axel-travel.com">Blog</a>
               </li>
               <li>
-                <a href="https://axel-travel.com/o-nas/">O nas</a>
+                <a href="https://axel-travel.pl/o-nas/">O nas</a>
               </li>
               <li>
                 <a href="https://axel-travel.pl/oferta/">Oferta</a>
@@ -62,7 +61,7 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="https://axel-travel.com/o-nas/#ubezpieczenia">
+                <a href="https://axel-travel.pl/o-nas/#ubezpieczenia">
                   Ubezpieczenia
                 </a>
               </li>

@@ -2,14 +2,14 @@
 templateKey: index-page
 title: Historie z podróży
 image: /img/axel-travel-blog-o-podrozach.jpg
-heading: Historie z podróży
+heading: z podróży
 subheading: Axel Travel - Blog
 mainpitch:
-  title: Dlaczego?
+  title: Axel Travel
   description: >
-    Axel Travel - tradycja i jakość w podrózy
+    Historie i reportaze
 description: >-
-  Poznaj szczegóły dotyczące podrózy z naszego biura wycieczek!
+  Przeczytaj, co warto wiedzieć apropo wycieczek do okoła świata. Poznaj polecane miesjca i hotele oraz najlepsze zakątki globu warte odwiedzenia.
 intro:
   blurbs:
     - image: /img/peru.jpg

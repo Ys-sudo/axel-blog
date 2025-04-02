@@ -1,10 +1,12 @@
 import * as React from "react";
 import { Helmet } from "react-helmet";
+import "./Styles.css"; // Ensure to create the accompanying CSS file
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
 import useSiteMetadata from "./SiteMetadata";
 import { withPrefix } from "gatsby";
+import Carousel from "./Logos";
 
 const TemplateWrapper = ({ children }) => {
   const { title, description } = useSiteMetadata();
@@ -50,6 +52,7 @@ const TemplateWrapper = ({ children }) => {
       </Helmet>
       <Navbar />
       <div>{children}</div>
+      <Carousel />
       <Footer />
     </div>
   );
