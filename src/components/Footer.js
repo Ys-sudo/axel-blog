@@ -68,6 +68,15 @@ const Footer = () => {
               <li>
                 <a href="https://axel-travel.pro">Globus podróżnika</a>
               </li>
+              <li>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://liveroom.merlinx.eu/pl/880090001/"
+                >
+                  Liveroom
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -231,7 +240,7 @@ const Footer = () => {
         <p style={{ fontSize: "12px" }}>
           <a href="https://axel-travel.pl/privacyrodo/">Polityka prywatności</a>{" "}
           | <a href="https://axel-travel.pl/cookies/">Cookies</a> |{" "}
-          <a href="https://axel-travel.pl/regulamin">Regulamin</a>
+          <a href="https://axel-travel.pl/regulamin/">Regulamin</a>
           <br /> <br />
           &copy; 1991- <span id="year"></span>{" "}
           <a
