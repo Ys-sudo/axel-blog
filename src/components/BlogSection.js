@@ -6,28 +6,28 @@ const BlogSection = () => {
       name: "Porady",
       description: "Przydatne tipy, porady dla podróżujących za granicę.",
       image: "https://axeltravel.pro/img/peru.jpg",
-      link: "/",
+      link: "/kategoria/porady/",
     },
     {
       name: "Reportaże",
       description: "Reportaże z miejscówek podróży z filmami i opiniami.",
       image:
         "https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/reportaze-z-podrozy.jpg?v=1743033849944",
-      link: "/",
+      link: "/kategoria/reportaze-z-podrozy/",
     },
     {
       name: "Bagaże i dokumenty",
       description: "Informacje na temat dokumentów i bagaży podczas podróży.",
       image:
         "https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/bagaze-i-dokumenty.jpg?v=1743033853029",
-      link: "/",
+      link: "/kategoria/bagaz-i-dokumenty/",
     },
     {
       name: "Przed podróżą",
       description: "Poznaj zalecenia przed podróżą w nieznane!",
       image:
         "https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/przed-podroza.jpg?v=1743033847149",
-      link: "/",
+      link: "/kategoria/przed-podroza/",
     },
   ];
 

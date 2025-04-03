@@ -103,22 +103,22 @@ const Header = () => {
                     <strong>Popularne</strong>
                   </li>
                   <li>
-                    <a href="https://axel-travel.pl/turcja/">Turcja</a>
+                    <a href="https://axel-travel.pl/turcja/">🇹🇷 Turcja</a>
                   </li>
                   <li>
-                    <a href="https://axel-travel.pl/grecja/">Grecja</a>
+                    <a href="https://axel-travel.pl/grecja/">🇬🇷 Grecja</a>
                   </li>
                   <li>
-                    <a href="https://axel-travel.pl/hiszpania/">Hiszpania</a>
+                    <a href="https://axel-travel.pl/hiszpania/">🇪🇸 Hiszpania</a>
                   </li>
                   <li>
-                    <a href="https://axel-travel.pl/albania/">Albania</a>
+                    <a href="https://axel-travel.pl/albania/">🇦🇱 Albania</a>
                   </li>
                   <li>
-                    <a href="https://axel-travel.pl/egipt/">Egipt</a>
+                    <a href="https://axel-travel.pl/egipt/">🇪🇬 Egipt</a>
                   </li>
                   <li>
-                    <a href="https://axel-travel.pl/tunezja/">Tunezja</a>
+                    <a href="https://axel-travel.pl/tunezja/">🇹🇳 Tunezja</a>
                   </li>
                 </ul>
                 <ul>
@@ -127,23 +127,23 @@ const Header = () => {
                   </li>
                   <li>
                     <a href="https://axel-travel.pl/wyspy-kanaryjskie/">
-                      Wyspy Kanaryjskie
+                      🇪🇸 Wyspy Kanaryjskie
                     </a>
                   </li>
                   <li>
-                    <a href="https://axel-travel.pl/madera/">Madera</a>
+                    <a href="https://axel-travel.pl/madera/">🇵🇹 Madera</a>
                   </li>
                   <li>
-                    <a href="https://axel-travel.pl/malta/">Malta</a>
+                    <a href="https://axel-travel.pl/malta/">🇲🇹 Malta</a>
                   </li>
                   <li>
-                    <a href="https://axel-travel.pl/cypr/">Cypr</a>
+                    <a href="https://axel-travel.pl/cypr/">🇨🇾 Cypr</a>
                   </li>
                   <li>
-                    <a href="https://axel-travel.pl/wlochy/">Włochy</a>
+                    <a href="https://axel-travel.pl/wlochy/">🇮🇹 Włochy</a>
                   </li>
                   <li>
-                    <a href="https://axel-travel.pl/bulgaria/">Bułgaria</a>
+                    <a href="https://axel-travel.pl/bulgaria/">🇧🇬 Bułgaria</a>
                   </li>
                 </ul>
                 <ul>
@@ -151,22 +151,24 @@ const Header = () => {
                     <strong>Egzotyka</strong>
                   </li>
                   <li>
-                    <a href="https://axel-travel.pl/tajlandia/">Tajlandia</a>
+                    <a href="https://axel-travel.pl/tajlandia/">🇹🇭 Tajlandia</a>
                   </li>
                   <li>
-                    <a href="https://axel-travel.pl/wietnam/">Wietnam</a>
+                    <a href="https://axel-travel.pl/wietnam/">🇻🇳 Wietnam</a>
                   </li>
                   <li>
-                    <a href="https://axel-travel.pl/malezja/">Malezja</a>
+                    <a href="https://axel-travel.pl/malezja/">🇲🇾 Malezja</a>
                   </li>
                   <li>
-                    <a href="https://axel-travel.pl/meksyk/">Meksyk</a>
+                    <a href="https://axel-travel.pl/meksyk/">🇲🇽 Meksyk</a>
                   </li>
                   <li>
-                    <a href="https://axel-travel.pl/dominikana/">Dominikana</a>
+                    <a href="https://axel-travel.pl/dominikana/">
+                      🇩🇴 Dominikana
+                    </a>
                   </li>
                   <li>
-                    <a href="https://axel-travel.pl/oman/">Oman</a>
+                    <a href="https://axel-travel.pl/oman/">🇴🇲 Oman</a>
                   </li>
                 </ul>
               </div>
@@ -315,6 +317,15 @@ const Header = () => {
             </li>
             <li>
               <a href="/kontakt/">Kontakt</a>
+            </li>
+            <li>
+              <a
+                href="https://liveroom.merlinx.eu/pl/880090001/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Liveroom
+              </a>
             </li>
           </ul>
 

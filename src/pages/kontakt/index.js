@@ -1,12 +1,16 @@
 import * as React from "react";
-import { navigate } from "gatsby-link";
-import Layout from "../../components/Layout";
 
-function encode(data) {
-  return Object.keys(data)
-    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-    .join("&");
-}
+import { getCalApi } from "@calcom/embed-react";
+import Layout from "../../components/Layout";
+import MapContainer from "../../components/Map";
+import ContactForm from "../../components/Form";
+import FullWidthImage from "../../components/FullWidthImage";
+import HeroImg from "../../img/kontakt-hero.jpg";
+
+import BlogSection from "../../components/BlogSection";
+
+let CoolImg = { isCat: true, url: null, isContact: true };
+CoolImg.url = HeroImg;
 
 export default class Index extends React.Component {
   constructor(props) {
@@ -14,101 +18,120 @@ export default class Index extends React.Component {
     this.state = { isValidated: false };
   }
 
-  handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({
-        "form-name": form.getAttribute("name"),
-        ...this.state,
-      }),
-    })
-      .then(() => navigate(form.getAttribute("action")))
-      .catch((error) => alert(error));
-  };
+  componentDidMount() {
+    (async () => {
+      const cal = await getCalApi();
+      cal("ui", {
+        theme: "dark",
+        styles: { branding: { brandColor: "#000000" } },
+        hideEventTypeDetails: true,
+        layout: "month_view",
+      });
+    })();
+  }
 
   render() {
     return (
       <Layout>
-        <section className="section">
-          <div className="container">
-            <div className="content">
-              <h1>Contact</h1>
-              <form
-                name="contact"
-                method="post"
-                action="/contact/thanks/"
-                data-netlify="true"
-                data-netlify-honeypot="bot-field"
-                onSubmit={this.handleSubmit}
-              >
-                {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
-                <input type="hidden" name="form-name" value="contact" />
-                <div hidden>
-                  <label>
-                    Don’t fill this out:{" "}
-                    <input name="bot-field" onChange={this.handleChange} />
-                  </label>
-                </div>
-                <div className="field">
-                  <label className="label" htmlFor={"name"}>
-                    Your name
-                  </label>
-                  <div className="control">
-                    <input
-                      className="input"
-                      type={"text"}
-                      name={"name"}
-                      onChange={this.handleChange}
-                      id={"name"}
-                      required={true}
+        <>
+          <FullWidthImage
+            img={CoolImg}
+            title={"Kontakt"}
+            subheading={"Zapraszamy na darmową rozmowę!"}
+          />
+          <section className="py-10">
+            <div className="mx-auto max-w-5xl px-6 md:px-12 lg:px-24 flex flex-col md:flex-row gap-10">
+              <div className="md:w-1/2 space-y-6">
+                <h3 className="text-lg font-bold">Biuro obsługi klienta</h3>
+                <h4 className="flex items-center text-lg mb-6">
+                  <img
+                    src="/img/clock.svg"
+                    alt="godziny otwarcia"
+                    className="w-5 h-5 mr-4"
+                  />
+                  pon. - pt. 9:00 - 17:00
+                </h4>
+                <p className="flex items-center">
+                  <img
+                    src="/img/map-marker-alt.svg"
+                    alt="ulica"
+                    className="w-5 h-5 mr-4"
+                  />
+                  ul. Odrodzenia 7a
+                </p>
+                <p className="flex items-center">
+                  <img
+                    src="/img/globe.svg"
+                    alt="miasto"
+                    className="w-5 h-5 mr-4"
+                  />
+                  59-300 Lubin
+                </p>
+
+                <h4 className="mt-6 mb-4">Kontakt mailowy lub telefoniczny:</h4>
+                <div className="space-y-4">
+                  <a
+                    href="mailto:biuro1@axel-travel.pl"
+                    className="flex justify-between items-center px-4 py-2 bg-blue-700 text-center text-white rounded-md hover:bg-blue-500"
+                  >
+                    biuro@axel-travel.pl
+                    <img
+                      src="/img/e-mail.svg"
+                      alt="email"
+                      className="w-5 h-5 mr-4 invert"
                     />
-                  </div>
-                </div>
-                <div className="field">
-                  <label className="label" htmlFor={"email"}>
-                    Email
-                  </label>
-                  <div className="control">
-                    <input
-                      className="input"
-                      type={"email"}
-                      name={"email"}
-                      onChange={this.handleChange}
-                      id={"email"}
-                      required={true}
+                  </a>
+                  <a
+                    href="tel:+48 76 846 67 66"
+                    className="flex justify-between items-center px-4 py-2 bg-blue-700 text-center text-white rounded-md hover:bg-blue-500"
+                  >
+                    +48 76 846 67 66
+                    <img
+                      src="/img/mobile.svg"
+                      alt="numer telefonu"
+                      className="w-5 h-5 mr-4 invert"
                     />
-                  </div>
-                </div>
-                <div className="field">
-                  <label className="label" htmlFor={"message"}>
-                    Message
-                  </label>
-                  <div className="control">
-                    <textarea
-                      className="textarea"
-                      name={"message"}
-                      onChange={this.handleChange}
-                      id={"message"}
-                      required={true}
+                  </a>
+                  <a
+                    style={{ cursor: "pointer" }}
+                    className="flex justify-between items-center px-4 py-2 bg-blue-700 text-center text-white rounded-md hover:bg-blue-500"
+                    data-cal-link="george-dev/30min"
+                    data-cal-config='{"layout":"month_view"}'
+                  >
+                    Umów się na konsultacje
+                    <img
+                      src="/img/calendar-days-solid.svg"
+                      alt="kalendarz"
+                      className="w-5 h-5 mr-4 invert"
                     />
-                  </div>
+                  </a>
+                  <a
+                    href="https://liveroom.merlinx.eu/pl/880090001/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ cursor: "pointer" }}
+                    className="flex justify-between items-center px-4 py-2 bg-blue-700 text-center text-white rounded-md hover:bg-blue-500"
+                  >
+                    Liveroom
+                    <img
+                      src="/img/headset-solid.svg"
+                      alt="kalendarz"
+                      className="w-5 h-5 mr-4 invert"
+                    />
+                  </a>
                 </div>
-                <div className="field">
-                  <button className="button is-link" type="submit">
-                    Send
-                  </button>
-                </div>
-              </form>
+              </div>
+
+              <div className="md:w-1/2">
+                <h4 className="text-lg font-bold">Formularz kontaktowy</h4>
+                <h4 className="mb-6">Wyślij nam wiadomość!</h4>
+                <ContactForm />
+              </div>
             </div>
-          </div>
-        </section>
+            <BlogSection />
+            <MapContainer />
+          </section>
+        </>
       </Layout>
     );
   }
