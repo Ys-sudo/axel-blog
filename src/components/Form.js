@@ -1,231 +1,172 @@
-import React from "react";
-import { navigate } from "gatsby-link";
+import * as React from "react";
+import { useState } from "react";
+import { navigate } from "gatsby";
 
-const formData = require("form-data");
+const ContactForm = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+    privacy: false,
+    file: null,
+    "form-name": "kontakt",
+  });
 
-function encode(data) {
-  const formData = new FormData();
-
-  for (const key of Object.keys(data)) {
-    formData.append(key, data[key]);
-  }
-
-  return formData;
-}
-
-class ContactForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: type === "checkbox" ? checked : value,
+    }));
   };
 
-  handleAttachment = (e) => {
-    this.setState({ [e.target.name]: e.target.files[0] });
-  };
-
-  handleSubmit = (e) => {
-    let fileinput = document.getElementById("fileinput");
-    let file = fileinput.files[0];
-
-    let submitBtn = document.querySelector('button[type="submit"]');
-    submitBtn.disabled = true;
-    setTimeout(function () {
-      submitBtn.disabled = false;
-    }, 2000);
-
-    if (file !== undefined && file.size < 1048576) {
-      e.preventDefault();
-      const form = e.target;
-
-      let formdata;
-      formdata = encode({
-        "form-name": form.getAttribute("name"),
-        ...this.state,
-      });
-
-      fetch("/", {
-        method: "POST",
-        body: formdata,
-      })
-        .then(() => {
-          navigate("/kontakt/dziekujemy/");
-        })
-        .catch((error) => alert(error));
-    } else if (file.size > 1048576) {
-      alert(
-        "Plik jest zbyt duży. Maksymalna wielkość to 1MB, spróbuj ponownie z mniejszym plikiem"
-      );
-      e.preventDefault();
-    } else if (file === undefined) {
-      e.preventDefault();
-      const form = e.target;
-
-      let formdata;
-      formdata = encode({
-        "form-name": form.getAttribute("name"),
-        ...this.state,
-      });
-
-      fetch("/", {
-        method: "POST",
-        body: formdata,
-      })
-        .then(() => {
-          navigate("/kontakt/dziekujemy/");
-        })
-        .catch((error) => alert(error));
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file && file.size > 1048576) {
+      alert("Plik jest zbyt duży. Maksymalna wielkość to 1MB.");
+      return;
     }
+    setFormData((prevData) => ({ ...prevData, file }));
   };
 
-  render() {
-    return (
-      <div id="kontakt" className="flex justify-center">
-        <form
-          name="kontakt"
-          id="kontaktform"
-          method="post"
-          data-netlify="true"
-          data-netlify-honeypot="bot-field"
-          action="/kontakt/dziekujemy/"
-          onSubmit={this.handleSubmit}
-          className="bg-blue-300 shadow-lg rounded-lg p-2 md:p-10 w-full max-w-2xl"
+  const encode = (data) => {
+    const formData = new FormData();
+    Object.keys(data).forEach((key) => {
+      if (key === "file" && data[key]) {
+        formData.append(key, data[key], data[key].name);
+      } else {
+        formData.append(key, data[key]);
+      }
+    });
+    return formData;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const submitBtn = e.target.querySelector("button[type='submit']");
+    submitBtn.disabled = true;
+    setTimeout(() => (submitBtn.disabled = false), 2000);
+
+    fetch("/", {
+      method: "POST",
+      body: encode(formData),
+    })
+      .then(() => navigate("/kontakt/dziekujemy/"))
+      .catch((error) => alert("Błąd przesyłania: " + error.message));
+  };
+
+  return (
+    <div id="kontakt" className="flex justify-center">
+      <form
+        name="kontakt"
+        method="POST"
+        data-netlify="true"
+        onSubmit={handleSubmit}
+        className="bg-blue-300 shadow-lg rounded-lg p-4 md:p-10 w-full max-w-2xl"
+      >
+        <input type="hidden" name="form-name" value="kontakt" />
+
+        <div className="mb-4">
+          <label className="block font-semibold mb-1" htmlFor="name">
+            Imię i Nazwisko*
+          </label>
+          <input
+            type="text"
+            name="name"
+            required
+            value={formData.name}
+            onChange={handleChange}
+            className="w-full p-2 border rounded-md"
+          />
+        </div>
+
+        <div className="mb-4">
+          <label className="block font-semibold mb-1" htmlFor="email">
+            Adres E-mail*
+          </label>
+          <input
+            type="email"
+            name="email"
+            required
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full p-2 border rounded-md"
+          />
+        </div>
+
+        <div className="mb-4">
+          <label className="block font-semibold mb-1" htmlFor="phone">
+            Numer telefonu*
+          </label>
+          <input
+            type="tel"
+            name="phone"
+            required
+            value={formData.phone}
+            onChange={handleChange}
+            className="w-full p-2 border rounded-md"
+          />
+        </div>
+
+        <div className="mb-4">
+          <label className="block font-semibold mb-1">Załącz plik:</label>
+          <input
+            type="file"
+            name="file"
+            onChange={handleFileChange}
+            className="w-full p-2 border rounded-md cursor-pointer"
+          />
+          <p className="text-xs text-gray-800 mt-2">
+            Maksymalna wielkość pliku to <b>1MB</b>.
+          </p>
+        </div>
+
+        <div className="mb-4">
+          <label className="block font-semibold mb-1" htmlFor="message">
+            Wiadomość*
+          </label>
+          <textarea
+            name="message"
+            required
+            value={formData.message}
+            onChange={handleChange}
+            className="w-full p-2 border rounded-md"
+            rows="5"
+          ></textarea>
+        </div>
+
+        <div className="mb-4 flex items-center">
+          <input
+            type="checkbox"
+            name="privacy"
+            required
+            checked={formData.privacy}
+            onChange={handleChange}
+            className="mr-2"
+          />
+          <label className="text-sm">
+            Wyrażam zgodę na przetwarzanie moich danych zgodnie z{" "}
+            <a href="/privacy-policy" className="text-white underline">
+              polityką prywatności
+            </a>
+            .
+          </label>
+        </div>
+
+        <button
+          type="submit"
+          className={`w-full px-6 py-3 rounded-lg shadow ${
+            formData.privacy
+              ? "bg-blue-500 hover:bg-blue-600 text-white"
+              : "bg-gray-300 text-gray-600 cursor-not-allowed"
+          }`}
         >
-          {/* Hidden fields for Netlify */}
-          <input type="hidden" name="form-name" value="Formularz" />
-          <div hidden>
-            <label>
-              Don’t fill this out:{" "}
-              <input name="bot-field" onChange={this.handleChange} />
-            </label>
-          </div>
-
-          {/* Name Field */}
-          <div className="mb-2">
-            <label className="block font-semibold mb-1" htmlFor="name">
-              Imię i Nazwisko<sup>*</sup>:
-            </label>
-            <input
-              className="w-full p-2 border rounded-md"
-              type="text"
-              name="imię i nazwisko"
-              onChange={this.handleChange}
-              id="imię-i-nazwiskonew"
-              required
-            />
-          </div>
-
-          {/* Email Field */}
-          <div className="mb-2">
-            <label className="block font-semibold mb-1" htmlFor="email">
-              Adres E-mail<sup>*</sup>:
-            </label>
-            <input
-              className="w-full p-2 border rounded-md"
-              type="email"
-              name="adres email"
-              onChange={this.handleChange}
-              id="adres-emailnew"
-              required
-            />
-          </div>
-
-          {/* Phone Number Field */}
-          <div className="mb-4">
-            <label className="block font-semibold mb-1" htmlFor="numertelnew">
-              Numer telefonu<sup>*</sup>:
-            </label>
-            <input
-              className="w-full p-2 border rounded-md"
-              type="tel"
-              name="numer telefonu"
-              onChange={this.handleChange}
-              id="numertelnew"
-              required
-            />
-          </div>
-
-          {/* File Upload */}
-          <div className="mb-4">
-            <label className="block font-semibold mb-1">Załącz plik:</label>
-            <input
-              className="w-full border p-2 rounded-md cursor-pointer"
-              type="file"
-              name="plik"
-              onChange={this.handleAttachment}
-              id="fileinput"
-            />
-            <p className="text-xs text-white bg-gray-800 p-1 text-center mt-2">
-              Maksymalna wielkość pliku to <b>1MB</b>.
-            </p>
-          </div>
-
-          {/* Message Field */}
-          <div className="mb-4">
-            <label className="block font-semibold mb-1" htmlFor="wiadomośćnew">
-              Wiadomość<sup>*</sup>:
-            </label>
-            <textarea
-              className="w-full p-2 border rounded-md"
-              name="wiadomość"
-              onChange={this.handleChange}
-              id="wiadomośćnew"
-              required
-              rows="5"
-            ></textarea>
-          </div>
-
-          {/* Privacy Policy Checkbox */}
-          <div className="mb-4 flex items-center">
-            <input
-              required
-              onChange={this.handleChange}
-              type="checkbox"
-              id="privacynew"
-              name="privacy"
-              value="true"
-              className="mr-2"
-            />
-            <label className="text-sm" htmlFor="privacynew">
-              Wyrażam zgodę na przetwarzanie moich danych zgodnie z naszą
-              <a
-                className="text-white underline ml-1"
-                href="https://axel-travel.pl/privacyrodo/"
-              >
-                polityką prywatności
-              </a>
-              <sup>*</sup>.
-            </label>
-          </div>
-
-          {/* Submit Button */}
-          <div className="text-right">
-            <button
-              className="px-5 py-2 bg-blue-600 text-white rounded-md border border-white hover:bg-blue-700 transition"
-              onClick={showFileSize}
-              type="submit"
-              onSubmit={this.handleSubmit}
-            >
-              Wyślij
-            </button>
-          </div>
-        </form>
-      </div>
-    );
-  }
-}
-
-function showFileSize() {
-  let fileinput = document.getElementById("fileinput");
-
-  let file = fileinput.files[0];
-
-  if (file !== undefined) {
-    console.log(file.size);
-  }
-}
+          Wyślij
+        </button>
+      </form>
+    </div>
+  );
+};
 
 export default ContactForm;
