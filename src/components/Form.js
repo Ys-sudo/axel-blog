@@ -90,6 +90,7 @@ class ContactForm extends React.Component {
           method="post"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
+          action="/kontakt/dziekujemy/"
           onSubmit={this.handleSubmit}
           className="bg-blue-300 shadow-lg rounded-lg p-2 md:p-10 w-full max-w-2xl"
         >
@@ -139,7 +140,7 @@ class ContactForm extends React.Component {
             </label>
             <input
               className="w-full p-2 border rounded-md"
-              type="number"
+              type="tel"
               name="numer telefonu"
               onChange={this.handleChange}
               id="numertelnew"
@@ -204,8 +205,9 @@ class ContactForm extends React.Component {
           <div className="text-right">
             <button
               className="px-5 py-2 bg-blue-600 text-white rounded-md border border-white hover:bg-blue-700 transition"
-              type="submit"
               onClick={showFileSize}
+              type="submit"
+              onSubmit={this.handleSubmit}
             >
               Wyślij
             </button>

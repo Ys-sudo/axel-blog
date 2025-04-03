@@ -56,7 +56,11 @@ const Footer = () => {
                 <a href="https://axel-travel.pl/kierunki/">Kierunki</a>
               </li>
               <li>
-                <a href="https://www.flightradar24.com/51.10,17.03/6">
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://www.flightradar24.com/51.10,17.03/6"
+                >
                   Radar lotów
                 </a>
               </li>
@@ -66,7 +70,13 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="https://axel-travel.pro">Globus podróżnika</a>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://axel-travel.pro"
+                >
+                  Globus podróżnika
+                </a>
               </li>
               <li>
                 <a

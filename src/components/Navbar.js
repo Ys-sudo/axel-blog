@@ -378,6 +378,36 @@ const Header = () => {
                 />
               </div>
             </a>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://tiktok.com/@axel.travel.pl"
+            >
+              <div className="monogram-button">
+                <img
+                  width="15"
+                  height="15"
+                  style={{ filter: "brightness(0)" }}
+                  src="https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/tiktok.svg?v=1743521559456"
+                  alt="TikTok"
+                />
+              </div>
+            </a>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.instagram.com/axel.travel.pl"
+            >
+              <div className="monogram-button">
+                <img
+                  width="15"
+                  height="15"
+                  style={{ filter: "brightness(0)" }}
+                  src="https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/instagram.svg?v=1743521567193"
+                  alt="Instagram"
+                />
+              </div>
+            </a>
           </div>
         </nav>
       </div>

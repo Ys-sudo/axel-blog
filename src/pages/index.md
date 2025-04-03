@@ -2,12 +2,12 @@
 templateKey: index-page
 title: Historie z podróży
 image: /img/axel-travel-blog-o-podrozach.jpg
-heading: z podróży
+heading: z podróży dookoła świata
 subheading: Axel Travel - Blog
 mainpitch:
   title: Axel Travel
   description: >
-    Historie i reportaze
+    Historie i reportaże
 description: >-
   Przeczytaj, co warto wiedzieć apropo wycieczek do okoła świata. Poznaj polecane miesjca i hotele oraz najlepsze zakątki globu warte odwiedzenia.
 intro:

@@ -57,12 +57,12 @@ export default function FullWidthImage(props) {
             {img?.isCat === true && img?.isContact === false
               ? "Blog | Kategoria"
               : img?.isContact === true
-              ? "Axel Travel | Kontakt"
+              ? "Axel Travel"
               : "Blog"}
           </span>
           {title && (
             <h1
-              className="text-2xl md:text-4xl font-extrabold"
+              className="text-2xl mt-[20px] md:text-4xl font-extrabold"
               style={{
                 transform: `translate(${mousePos.x}px, ${
                   mousePos.y
