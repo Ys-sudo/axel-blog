@@ -42,6 +42,33 @@ const ContactForm = () => {
     return formData;
   };
 
+  const sendToDiscord = async (formData) => {
+    const webhookURL =
+      "https://discord.com/api/webhooks/1357510497162887379/ael9N4AWZC7BXkbCzdfroMmk_A0bKtwU7I_QFARsjtIb_-CEB5_yykB62OZGHdd0kDvD";
+
+    const payload = {
+      content: `📩 **New Form Submission**\n**Name:** ${formData.name}\n**Email:** ${formData.email}\n**Message:** ${formData.message}`,
+      username: "Form Bot",
+      // avatar_url: "https://your-avatar-url.com/avatar.png", // Optional
+    };
+
+    try {
+      const response = await fetch(webhookURL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send data to Discord.");
+      }
+    } catch (error) {
+      console.error("Discord Webhook Error:", error);
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const submitBtn = e.target.querySelector("button[type='submit']");
@@ -52,7 +79,11 @@ const ContactForm = () => {
       method: "POST",
       body: encode(formData),
     })
-      .then(() => navigate("/kontakt/dziekujemy/"))
+      .then(() => {
+        // tymczasowo nie działa przycisk do skopiowania url webhooka testowane i dziala git. - workaround hack na discord przez response z endpointa
+        sendToDiscord(formData); // Sends data to Discord
+        navigate("/kontakt/dziekujemy/");
+      })
       .catch((error) => alert("Błąd przesyłania: " + error.message));
   };
 
@@ -69,7 +100,7 @@ const ContactForm = () => {
 
         <div className="mb-4">
           <label className="block font-semibold mb-1" htmlFor="name">
-            Imię i Nazwisko*
+            Imię i Nazwisko<sup>*</sup>
           </label>
           <input
             type="text"
@@ -83,7 +114,7 @@ const ContactForm = () => {
 
         <div className="mb-4">
           <label className="block font-semibold mb-1" htmlFor="email">
-            Adres E-mail*
+            Adres E-mail<sup>*</sup>
           </label>
           <input
             type="email"
@@ -97,7 +128,7 @@ const ContactForm = () => {
 
         <div className="mb-4">
           <label className="block font-semibold mb-1" htmlFor="phone">
-            Numer telefonu*
+            Numer telefonu<sup>*</sup>
           </label>
           <input
             type="tel"
@@ -124,7 +155,7 @@ const ContactForm = () => {
 
         <div className="mb-4">
           <label className="block font-semibold mb-1" htmlFor="message">
-            Wiadomość*
+            Wiadomość<sup>*</sup>
           </label>
           <textarea
             name="message"
@@ -150,7 +181,7 @@ const ContactForm = () => {
             <a href="/privacy-policy" className="text-white underline">
               polityką prywatności
             </a>
-            .
+            <sup>*</sup>.
           </label>
         </div>
 
