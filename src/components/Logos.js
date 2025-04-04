@@ -14,7 +14,7 @@ const items = [
     alt: "Rainbow",
   },
   {
-    link: "#",
+    link: "https://axel-travel.pl",
     image:
       "https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/join-up.png?v=1743016376587",
     alt: "Join up",

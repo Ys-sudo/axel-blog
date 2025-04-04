@@ -7,6 +7,7 @@ import BlogSection from "../components/BlogSection";
 import FullWidthImage from "../components/FullWidthImage";
 import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
 import HeroImg from "../img/axel-travel-kategoria-podroze.jpg";
+import TagsPill from "../components/TagsPill";
 
 const CategoryTemplate = ({ data, pageContext }) => {
   const { category, currentPage, numPages } = pageContext;
@@ -141,7 +142,9 @@ const CategoryTemplate = ({ data, pageContext }) => {
                 </div>
               )}
             </div>
-
+            <br />
+            <TagsPill />
+            <br />
             <BlogSection />
           </div>
         </section>
