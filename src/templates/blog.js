@@ -5,6 +5,7 @@ import FullWidthImage from "../components/FullWidthImage";
 import BlogCard from "../components/BlogCard"; // New: individual post card component
 import HeroImg from "../img/blog-hero.jpeg";
 import BlogSection from "../components/BlogSection";
+import TagsPill from "../components/TagsPill";
 let CoolImg = { isCat: true, url: HeroImg, isContact: true };
 
 const BlogIndexPage = ({ data, pageContext }) => {
@@ -96,6 +97,7 @@ const BlogIndexPage = ({ data, pageContext }) => {
           </div>
         </div>
       </section>
+      <TagsPill />
       <BlogSection />
     </Layout>
   );

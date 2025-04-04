@@ -193,7 +193,14 @@ body {
 .monogram-button:hover > img {
   filter: invert(1);
 }
-
+.herosub {
+  margin-top: 15px;
+}
+@media (min-width: 768px) {
+  .herosub {
+    max-width: 65%;
+  }
+}
 /* Mobile Navigation */
 @media (max-width: 768px) {
   .nav-menu {

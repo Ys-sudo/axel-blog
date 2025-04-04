@@ -75,7 +75,7 @@ export default function FullWidthImage(props) {
           )}
           {subheading && (
             <h2
-              className="text-xl md:max-w-1/2 md:text-2xl font-semibold mt-2"
+              className="herosub text-xl md:max-w-1/2 md:text-2xl font-semibold mt-2"
               style={{
                 transform: `translate(${mousePos.x / 2}px, ${
                   mousePos.y / 2
