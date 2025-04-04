@@ -8,6 +8,7 @@ import GreekIslandsSlider from "../components/Greek";
 import BlogRoll from "../components/BlogRoll";
 import FullWidthImage from "../components/FullWidthImage";
 import BlogSection from "../components/BlogSection";
+import TagsPill from "../components/TagsPill";
 
 export const IndexPageTemplate = ({
   image,
@@ -28,32 +29,33 @@ export const IndexPageTemplate = ({
   const isFirst = currentPage === 1;
   const isLast = currentPage === numPages;
   // For the index page, adjust the link for the first page appropriately.
-  const prevPage = currentPage - 1 === 1 ? "/" : `/${currentPage - 1}`;
-  const nextPage = `/${currentPage + 1}`;
+  const prevPage =
+    currentPage - 1 === 1 ? "/#articles" : `/${currentPage - 1}/#articles`;
+  const nextPage = `/${currentPage + 1}/#articles`;
 
   return (
     <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
       <FullWidthImage img={heroImage} title={title} subheading={subheading} />
-      <BlogSection />
+
       <section className="py-16 px-6 md:px-12">
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
-            <h1 className="text-lg font-semibold uppercase tracking-wide text-gray-600 dark:text-gray-300">
+            <h1 className="text-lg max-w-5xl mx-auto font-semibold uppercase tracking-wide text-gray-600 dark:text-gray-300">
               {mainpitch.title}
             </h1>
-            <h2 className="text-5xl font-bold mt-4 mb-6 text-gray-900 dark:text-gray-100">
+            <h2 className="text-5xl max-w-5xl mx-auto font-bold mt-4 mb-6 text-gray-900 dark:text-gray-100">
               {mainpitch.description}
             </h2>
           </div>
-          <div className="text-center mt-8">
-            <h3 className="text-4xl font-bold text-blue-600 dark:text-blue-400">
+          <div className="text-center -mt-4">
+            <h3 className="text-4xl max-w-5xl mx-auto font-bold text-blue-600 dark:text-blue-400">
               {heading}
             </h3>
-            <p className="text-lg text-gray-700 dark:text-gray-300 mt-4">
+            <p className="text-lg max-w-5xl mx-auto text-gray-700 dark:text-gray-300 mt-4">
               {description}
             </p>
           </div>
-
+          <br id="articles" />
           <div className="mt-16">
             <h3 className="text-4xl font-bold text-gray-900 dark:text-gray-100 text-center mb-8">
               Najnowsze artykuły
@@ -77,7 +79,7 @@ export const IndexPageTemplate = ({
                       ? "bg-blue-600 text-white"
                       : "bg-gray-200 hover:bg-gray-300"
                   }`}
-                  to={i === 0 ? "/" : `/${i + 1}`}
+                  to={i === 0 ? "/#articles" : `/${i + 1}#articles`}
                 >
                   {i + 1}
                 </Link>
@@ -100,6 +102,9 @@ export const IndexPageTemplate = ({
               </Link>
             </div>
           </div>
+          <BlogSection />
+          <TagsPill />
+          <br />
           <GreekIslandsSlider />
           {/*<Features gridItems={intro.blurbs} />*/}
         </div>
