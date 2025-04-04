@@ -247,13 +247,36 @@ export class MapContainer extends Component {
               <h4 style={{ fontSize: "15px" }}>
                 <b>{this.state.selectedPlace.name}</b>
               </h4>
-              <br />
-              <div style={{ fontSize: "13px" }}>
-                <p>ul. Odrodzenia 7</p>
-                <p>59-300 Lubin</p>
-                <br />
+              <div>
+                <h3 className="text-sm font-bold">Biuro obsługi klienta</h3>
+                <h4 className="flex items-center text-sm mt-2">
+                  <img
+                    src="/img/clock.svg"
+                    alt="godziny otwarcia"
+                    className="w-5 h-5 mr-4"
+                  />
+                  pon. - pt. 9:00 - 17:00
+                </h4>
+                <p className="mt-2 flex items-center">
+                  <img
+                    src="/img/map-marker-alt.svg"
+                    alt="ulica"
+                    className="w-5 h-5 mr-4"
+                  />
+                  ul. Odrodzenia 7a
+                </p>
+                <p className="mt-2 flex items-center">
+                  <img
+                    src="/img/globe.svg"
+                    alt="miasto"
+                    className="w-5 h-5 mr-4"
+                  />
+                  59-300 Lubin
+                </p>
               </div>
-              <p>Zapraszamy do złożenia nam wizyty!</p>
+              <p className="mt-2 flex items-center">
+                Zapraszamy do złożenia nam wizyty!
+              </p>
             </div>
           </InfoWindow>
         </Map>
