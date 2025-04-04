@@ -4,27 +4,31 @@ const BlogSection = () => {
   const categories = [
     {
       name: "Porady",
-      description: "Przydatne tipy, porady dla podróżujących za granicę.",
+      description:
+        "Praktyczne porady dla podróżujących za granicę, sprawdzone wskazówki i polecane miejsca.",
       image: "https://axeltravel.pro/img/peru.jpg",
       link: "/kategoria/porady/",
     },
     {
       name: "Reportaże",
-      description: "Reportaże z miejscówek podróży z filmami i opiniami.",
+      description:
+        "Reportaże z wyjątkowych miejsc – relacje z podróży z filmami i opiniami naszych agentów oraz klientów.",
       image:
         "https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/reportaze-z-podrozy.jpg?v=1743033849944",
       link: "/kategoria/reportaze-z-podrozy/",
     },
     {
       name: "Bagaże i dokumenty",
-      description: "Informacje na temat dokumentów i bagaży podczas podróży.",
+      description:
+        "Wszystko, co musisz wiedzieć o dokumentach i bagażu – praktyczne, przydatne informacje.",
       image:
         "https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/bagaze-i-dokumenty.jpg?v=1743033853029",
       link: "/kategoria/bagaz-i-dokumenty/",
     },
     {
       name: "Przed podróżą",
-      description: "Poznaj zalecenia przed podróżą w nieznane!",
+      description:
+        "Przygotuj się na wyprawę w nieznane – sprawdź nasze rekomendacje i wskazówki!",
       image:
         "https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/przed-podroza.jpg?v=1743033847149",
       link: "/kategoria/przed-podroza/",
@@ -34,11 +38,13 @@ const BlogSection = () => {
   return (
     <section className="blog-section dark:bg-gray-800 py-12">
       <h2 className="blog-title text-3xl font-bold text-center text-gray-800 dark:text-white mb-4">
-        Poznaj tajniki udanych podróży
+        Dowiedz się, co sprawia, że podróże są naprawdę udane.
       </h2>
       <p className="blog-description text-lg text-center text-gray-600 dark:text-gray-300 mb-8">
-        Przydatne porady, informacje o bagażach i dokumentach oraz reportaże z
-        podróży naszych agentów oraz klientów!
+        Odkryj sekrety udanych podróży! Praktyczne porady, informacje o
+        dokumentach i bagażach, a także inspirujące reportaże z wypraw naszych
+        agentów i klientów. Zdradzamy sprawdzone sposoby na udane wyprawy,
+        dowiedz się, co sprawia, że podróże są naprawdę udane.
       </p>
       <div className="blog-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-4">
         {/* Dynamically rendered categories */}

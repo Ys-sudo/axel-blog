@@ -387,8 +387,7 @@ const Header = () => {
                 <img
                   width="15"
                   height="15"
-                  style={{ filter: "brightness(0)" }}
-                  src="https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/tiktok.svg?v=1743521559456"
+                  src="https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/tiktok-b.svg?v=1743759109100"
                   alt="TikTok"
                 />
               </div>
@@ -402,8 +401,7 @@ const Header = () => {
                 <img
                   width="15"
                   height="15"
-                  style={{ filter: "brightness(0)" }}
-                  src="https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/instagram.svg?v=1743521567193"
+                  src="https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/instagram-b.svg?v=1743759131753"
                   alt="Instagram"
                 />
               </div>

@@ -9,7 +9,7 @@ mainpitch:
   description: >
     Historie i reportaże
 description: >-
-  Przeczytaj, co warto wiedzieć apropo wycieczek do okoła świata. Poznaj polecane miesjca i hotele oraz najlepsze zakątki globu warte odwiedzenia.
+  Przeczytaj, co warto wiedzieć przed wyruszeniem w podróż dookoła świata – od praktycznych porad i wskazówek, przez polecane miejsca i hotele, aż po najpiękniejsze zakątki globu, które naprawdę warto odwiedzić.
 intro:
   blurbs:
     - image: /img/peru.jpg

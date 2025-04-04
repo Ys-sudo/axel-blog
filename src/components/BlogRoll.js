@@ -3,16 +3,14 @@ import PropTypes from "prop-types";
 import { Link, graphql, StaticQuery } from "gatsby";
 import PreviewCompatibleImage from "./PreviewCompatibleImage";
 
-const BlogRollTemplate = (props) => {
-  const { edges: posts } = props.data.allMarkdownRemark;
-
+export const BlogRollTemplate = ({ posts }) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
       {posts &&
         posts.map(({ node: post }) => (
           <div
-            className="bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl hover:translate-y-2"
             key={post.id}
+            className="bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl hover:translate-y-2"
           >
             <article
               className={`p-6 ${
@@ -57,7 +55,7 @@ const BlogRollTemplate = (props) => {
                   className="inline-block text-primary dark:text-primary-light hover:text-primary-dark font-medium transition-all"
                   to={post.fields.slug}
                 >
-                  Keep Reading →
+                  Przeczytaj artykuł →
                 </Link>
               </p>
             </article>
@@ -68,14 +66,16 @@ const BlogRollTemplate = (props) => {
 };
 
 BlogRollTemplate.propTypes = {
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-  }),
+  posts: PropTypes.array,
 };
 
-export default function BlogRoll() {
+export default function BlogRoll(props) {
+  // If posts are provided (via props), use them.
+  if (props.posts) {
+    return <BlogRollTemplate posts={props.posts} />;
+  }
+
+  // Fallback: use StaticQuery if no posts prop is passed.
   return (
     <StaticQuery
       query={graphql`
@@ -86,7 +86,7 @@ export default function BlogRoll() {
           ) {
             edges {
               node {
-                excerpt(pruneLength: 400)
+                excerpt(pruneLength: 300)
                 id
                 fields {
                   slug
@@ -111,7 +111,9 @@ export default function BlogRoll() {
           }
         }
       `}
-      render={(data, count) => <BlogRollTemplate data={data} count={count} />}
+      render={(data) => (
+        <BlogRollTemplate posts={data.allMarkdownRemark.edges} />
+      )}
     />
   );
 }

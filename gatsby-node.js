@@ -2,12 +2,14 @@ const _ = require("lodash");
 const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
 
-exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions;
+const POSTS_PER_PAGE = 6;
 
-  return graphql(`
+exports.createPages = async ({ actions, graphql }) => {
+  const { createPage } = actions;
+  const safeKebab = (input) => _.kebabCase(String(input || ""));
+  const result = await graphql(`
     {
-      allMarkdownRemark(limit: 1000) {
+      allMarkdownRemark(sort: { frontmatter: { date: DESC } }, limit: 1000) {
         edges {
           node {
             id
@@ -23,85 +25,101 @@ exports.createPages = ({ actions, graphql }) => {
         }
       }
     }
-  `).then((result) => {
-    if (result.errors) {
-      result.errors.forEach((e) => console.error(e.toString()));
-      return Promise.reject(result.errors);
-    }
+  `);
 
-    const posts = result.data.allMarkdownRemark.edges;
+  if (result.errors) {
+    result.errors.forEach((e) => console.error(e.toString()));
+    throw result.errors;
+  }
 
-    // Create individual post pages
-    posts.forEach((edge) => {
-      const id = edge.node.id;
+  const posts = result.data.allMarkdownRemark.edges;
+
+  // Create individual blog post pages.
+  posts.forEach(({ node }) => {
+    createPage({
+      path: node.fields.slug,
+      component: path.resolve(
+        `src/templates/${String(node.frontmatter.templateKey)}.js`
+      ),
+      context: {
+        id: node.id,
+      },
+    });
+  });
+
+  // Paginate blog list pages:
+  const numPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+  Array.from({ length: numPages }).forEach((_, i) => {
+    const currentPage = i + 1;
+    createPage({
+      path: i === 0 ? `/` : `/blog/${currentPage}`,
+      component: path.resolve(
+        i === 0 ? "src/templates/index-page.js" : "src/templates/blog.js"
+      ),
+      context: {
+        limit: POSTS_PER_PAGE,
+        skip: i * POSTS_PER_PAGE,
+        numPages,
+        currentPage,
+      },
+    });
+  });
+
+  // Create category pages with pagination.
+  const categories = _.uniq(
+    _.flatMap(posts, (post) => post.node.frontmatter.category || [])
+  ).filter(Boolean); // Filter out null or undefined categories
+
+  categories.forEach((category) => {
+    const categoryPosts = posts.filter(
+      (p) =>
+        p.node.frontmatter.category &&
+        p.node.frontmatter.category.includes(category)
+    );
+
+    const numCategoryPages = Math.ceil(categoryPosts.length / POSTS_PER_PAGE);
+    Array.from({ length: numCategoryPages }).forEach((_, i) => {
       createPage({
-        path: edge.node.fields.slug,
-        tags: edge.node.frontmatter.tags,
-        component: path.resolve(
-          `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
-        ),
+        path:
+          i === 0
+            ? `/kategoria/${safeKebab(category)}/`
+            : `/kategoria/${safeKebab(category)}/${i + 1}`,
+        component: path.resolve("src/templates/category.js"),
         context: {
-          id,
+          category,
+          limit: POSTS_PER_PAGE,
+          skip: i * POSTS_PER_PAGE,
+          numPages: numCategoryPages,
+          currentPage: i + 1,
         },
       });
     });
+  });
 
-    // Create tag pages
-    let tags = [];
-    posts.forEach((edge) => {
-      if (_.get(edge, `node.frontmatter.tags`)) {
-        tags = tags.concat(edge.node.frontmatter.tags);
-      }
-    });
-    tags = _.uniq(tags);
+  // Create tag pages with pagination.
+  const tags = _.uniq(
+    _.flatMap(posts, (post) => post.node.frontmatter.tags || [])
+  ).filter(Boolean); // Filter out null or undefined tags
 
-    tags.forEach((tag) => {
-      const tagPath = `/tags/${_.kebabCase(tag)}/`;
+  tags.forEach((tag) => {
+    const taggedPosts = posts.filter(
+      (p) => p.node.frontmatter.tags && p.node.frontmatter.tags.includes(tag)
+    );
 
+    const numTagPages = Math.ceil(taggedPosts.length / POSTS_PER_PAGE);
+    Array.from({ length: numTagPages }).forEach((_, i) => {
       createPage({
-        path: tagPath,
-        component: path.resolve(`src/templates/tags.js`),
+        path:
+          i === 0
+            ? `/tagi/${safeKebab(tag)}/`
+            : `/tagi/${safeKebab(tag)}/${i + 1}`,
+        component: path.resolve("src/templates/tags.js"),
         context: {
           tag,
-        },
-      });
-    });
-
-    // Create category pages
-    let categories = [];
-    posts.forEach((edge) => {
-      if (_.get(edge, `node.frontmatter.category`)) {
-        categories = categories.concat(edge.node.frontmatter.category);
-      }
-    });
-    categories = _.uniq(categories);
-
-    categories.forEach((category) => {
-      const categoryPath = `/kategoria/${_.kebabCase(category)}/`;
-
-      createPage({
-        path: categoryPath,
-        component: path.resolve(`src/templates/category.js`),
-        context: {
-          category,
-        },
-      });
-
-      // Filter the posts for this category
-      const categoryPosts = posts.filter((post) => {
-        return (
-          post.node.frontmatter.category &&
-          post.node.frontmatter.category.includes(category)
-        );
-      });
-
-      // Create the category page with the relevant posts
-      createPage({
-        path: categoryPath,
-        component: path.resolve(`src/templates/category.js`),
-        context: {
-          category,
-          categoryPosts, // Pass the filtered posts to the context
+          limit: POSTS_PER_PAGE,
+          skip: i * POSTS_PER_PAGE,
+          numPages: numTagPages,
+          currentPage: i + 1,
         },
       });
     });

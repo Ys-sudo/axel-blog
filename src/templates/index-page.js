@@ -17,8 +17,19 @@ export const IndexPageTemplate = ({
   mainpitch,
   description,
   intro,
+  posts,
+  pageContext,
 }) => {
   const heroImage = getImage(image) || image;
+  const { currentPage, numPages } = pageContext || {
+    currentPage: 1,
+    numPages: 1,
+  };
+  const isFirst = currentPage === 1;
+  const isLast = currentPage === numPages;
+  // For the index page, adjust the link for the first page appropriately.
+  const prevPage = currentPage - 1 === 1 ? "/" : `/${currentPage - 1}`;
+  const nextPage = `/${currentPage + 1}`;
 
   return (
     <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
@@ -47,7 +58,39 @@ export const IndexPageTemplate = ({
             <h3 className="text-4xl font-bold text-gray-900 dark:text-gray-100 text-center mb-8">
               Najnowsze artykuły
             </h3>
-            <BlogRoll />
+            <BlogRoll posts={posts} />
+            {/* Pagination Controls */}
+            <div className="flex justify-center mt-8">
+              {!isFirst && (
+                <Link
+                  className="mx-2 px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700"
+                  to={prevPage}
+                >
+                  ← Poprzednia
+                </Link>
+              )}
+              {Array.from({ length: numPages }).map((_, i) => (
+                <Link
+                  key={`pagination-number${i + 1}`}
+                  className={`mx-2 px-3 py-1 rounded ${
+                    i + 1 === currentPage
+                      ? "bg-blue-600 text-white"
+                      : "bg-gray-200 hover:bg-gray-300"
+                  }`}
+                  to={i === 0 ? "/" : `/${i + 1}`}
+                >
+                  {i + 1}
+                </Link>
+              ))}
+              {!isLast && (
+                <Link
+                  className="mx-2 px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700"
+                  to={nextPage}
+                >
+                  Następna →
+                </Link>
+              )}
+            </div>
             <div className="flex justify-center mt-8">
               <Link
                 className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105"
@@ -75,11 +118,13 @@ IndexPageTemplate.propTypes = {
   intro: PropTypes.shape({
     blurbs: PropTypes.array,
   }),
+  posts: PropTypes.array,
+  pageContext: PropTypes.object,
 };
 
-const IndexPage = ({ data }) => {
+const IndexPage = ({ data, pageContext }) => {
   const { frontmatter } = data.markdownRemark;
-
+  const posts = data.posts.edges;
   return (
     <Layout>
       <IndexPageTemplate
@@ -90,6 +135,8 @@ const IndexPage = ({ data }) => {
         mainpitch={frontmatter.mainpitch}
         description={frontmatter.description}
         intro={frontmatter.intro}
+        posts={posts}
+        pageContext={pageContext}
       />
     </Layout>
   );
@@ -100,13 +147,17 @@ IndexPage.propTypes = {
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.object,
     }),
+    posts: PropTypes.shape({
+      edges: PropTypes.array,
+    }),
   }),
+  pageContext: PropTypes.object,
 };
 
 export default IndexPage;
 
 export const pageQuery = graphql`
-  query IndexPageTemplate {
+  query IndexPageTemplate($skip: Int!, $limit: Int!) {
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
         title
@@ -133,6 +184,32 @@ export const pageQuery = graphql`
           }
           heading
           description
+        }
+      }
+    }
+    posts: allMarkdownRemark(
+      sort: { frontmatter: { date: DESC } }
+      filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
+      limit: $limit
+      skip: $skip
+    ) {
+      edges {
+        node {
+          excerpt(pruneLength: 400)
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            date(formatString: "MMMM DD, YYYY")
+            featuredpost
+            featuredimage {
+              childImageSharp {
+                gatsbyImageData(width: 600, layout: CONSTRAINED)
+              }
+            }
+          }
         }
       }
     }
