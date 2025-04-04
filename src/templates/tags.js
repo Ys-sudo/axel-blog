@@ -12,7 +12,7 @@ const TagRoute = ({ data, pageContext }) => {
   } tagged with “${tag}”`;
 
   // Base slug for the tag page.
-  const tagSlug = `/tags/${tag}`;
+  const tagSlug = `/tagi/${tag}`;
 
   const isFirst = currentPage === 1;
   const isLast = currentPage === numPages;
@@ -73,7 +73,7 @@ const TagRoute = ({ data, pageContext }) => {
               )}
 
               <p>
-                <Link to="/tags/">Browse all tags</Link>
+                <Link to="/tagi/">Browse all tags</Link>
               </p>
             </div>
           </div>

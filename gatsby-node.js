@@ -47,15 +47,28 @@ exports.createPages = async ({ actions, graphql }) => {
     });
   });
 
-  // Paginate blog list pages:
+  // Paginate homepage (front page) with /pageNumber:
   const numPages = Math.ceil(posts.length / POSTS_PER_PAGE);
   Array.from({ length: numPages }).forEach((_, i) => {
     const currentPage = i + 1;
     createPage({
-      path: i === 0 ? `/` : `/blog/${currentPage}`,
-      component: path.resolve(
-        i === 0 ? "src/templates/index-page.js" : "src/templates/blog.js"
-      ),
+      path: i === 0 ? `/` : `/${currentPage}`,
+      component: path.resolve("src/templates/index-page.js"),
+      context: {
+        limit: POSTS_PER_PAGE,
+        skip: i * POSTS_PER_PAGE,
+        numPages,
+        currentPage,
+      },
+    });
+  });
+
+  // Paginate blog page with /blog/pageNumber:
+  Array.from({ length: numPages }).forEach((_, i) => {
+    const currentPage = i + 1;
+    createPage({
+      path: i === 0 ? `/blog/` : `/blog/${currentPage}`,
+      component: path.resolve("src/templates/blog.js"),
       context: {
         limit: POSTS_PER_PAGE,
         skip: i * POSTS_PER_PAGE,

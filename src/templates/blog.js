@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 import FullWidthImage from "../components/FullWidthImage";
 import BlogCard from "../components/BlogCard"; // New: individual post card component
 import HeroImg from "../img/blog-hero.jpeg";
-
+import BlogSection from "../components/BlogSection";
 let CoolImg = { isCat: true, url: HeroImg, isContact: true };
 
 const BlogIndexPage = ({ data, pageContext }) => {
@@ -14,6 +14,7 @@ const BlogIndexPage = ({ data, pageContext }) => {
     allPosts.slice(0, POSTS_PER_PAGE)
   );
   const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
   const loader = useRef(null);
 
   const loadMore = useCallback(() => {
@@ -30,7 +31,8 @@ const BlogIndexPage = ({ data, pageContext }) => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting) {
+        if (entries[0].isIntersecting && !loading) {
+          setLoading(true);
           loadMore();
         }
       },
@@ -46,7 +48,10 @@ const BlogIndexPage = ({ data, pageContext }) => {
         observer.unobserve(loader.current);
       }
     };
-  }, [loadMore]);
+  }, [loadMore, loading]);
+
+  // Check if all posts are loaded
+  const allLoaded = visiblePosts.length === allPosts.length;
 
   return (
     <Layout>
@@ -81,11 +86,17 @@ const BlogIndexPage = ({ data, pageContext }) => {
             ))}
           </div>
 
+          {/* Loader or "All posts loaded" message */}
           <div ref={loader} className="w-full h-12 mt-12 text-center">
-            <span>⏳ Wczytywanie...</span>
+            {allLoaded ? (
+              <span>✅ Wszystkie posty załadowane</span>
+            ) : (
+              <span>⏳ Wczytywanie...</span>
+            )}
           </div>
         </div>
       </section>
+      <BlogSection />
     </Layout>
   );
 };

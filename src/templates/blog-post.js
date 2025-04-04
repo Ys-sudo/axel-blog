@@ -13,34 +13,55 @@ export const BlogPostTemplate = ({
   description,
   tags,
   title,
+  category,
+  date,
   helmet,
 }) => {
   const PostContent = contentComponent || Content;
 
   return (
-    <section className="section">
+    <section className="bg-white mt-20 py-12 px-2">
       {helmet || ""}
-      <div className="container content">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
-              {title}
-            </h1>
-            <p>{description}</p>
-            <PostContent content={content} />
-            {tags && tags.length ? (
-              <div style={{ marginTop: `4rem` }}>
-                <h4>Tags</h4>
-                <ul className="taglist">
-                  {tags.map((tag) => (
-                    <li key={tag + `tag`}>
-                      <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
+      <div className="container mx-auto">
+        <div className="max-w-3xl mx-auto">
+          <h1 className="text-4xl font-extrabold text-gray-900 leading-tight">
+            {title}
+          </h1>
+
+          <p className="mt-4 text-lg text-gray-600">{description}</p>
+          <div className="mt-8 text-sm">
+            <Link
+              to={`/kategoria/${kebabCase(category)}/`}
+              className="inline-block bg-blue-700 text-gray-100 py-1 px-3 rounded-full hover:bg-blue-900 transition-colors"
+            >
+              {category}
+            </Link>
           </div>
+          <div className="mt-8 text-sm text-gray-500">
+            <p>
+              <span className="font-semibold">Opublikowano:</span> {date}
+            </p>
+          </div>
+
+          <PostContent content={content} className="mt-8" />
+
+          {tags && tags.length ? (
+            <div className="mt-12">
+              <h4 className="text-xl font-semibold text-gray-800 mb-4">Tagi</h4>
+              <ul className="flex flex-wrap space-x-4">
+                {tags.map((tag) => (
+                  <li key={tag + `tag`}>
+                    <Link
+                      to={`/tagi/${kebabCase(tag)}/`}
+                      className="inline-block bg-gray-200 text-gray-800 py-1 px-3 rounded-full hover:bg-gray-300 transition-colors"
+                    >
+                      {tag}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
         </div>
       </div>
     </section>
@@ -53,6 +74,7 @@ BlogPostTemplate.propTypes = {
   description: PropTypes.string,
   title: PropTypes.string,
   helmet: PropTypes.object,
+  date: PropTypes.string,
 };
 
 const BlogPost = ({ data }) => {
@@ -63,6 +85,7 @@ const BlogPost = ({ data }) => {
       <BlogPostTemplate
         content={post.html}
         contentComponent={HTMLContent}
+        category={post.frontmatter.category}
         description={post.frontmatter.description}
         helmet={
           <Helmet titleTemplate="%s | Blog">
@@ -75,6 +98,7 @@ const BlogPost = ({ data }) => {
         }
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
+        date={post.frontmatter.date}
       />
     </Layout>
   );
@@ -94,10 +118,11 @@ export const pageQuery = graphql`
       id
       html
       frontmatter {
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "DD MMMM, YYYY")
         title
         description
         tags
+        category
       }
     }
   }
