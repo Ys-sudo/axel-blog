@@ -1,18 +1,17 @@
 ---
 templateKey: 'blog-post'
-title: 'Just in: small batch of Jamaican Blue Mountain in store next week'
+title: 'Wycieczki do Stanów a wizy dla Polaków'
 date: 2017-01-04T15:04:10.000Z
 featuredimage: /img/products-grid1.jpg
 featuredpost: true
 category: Bagaż i dokumenty
 description: >-
-  We’re proud to announce that we’ll be offering a small batch of Jamaica Blue
-  Mountain coffee beans in our store next week.
+  Ameryka to jeden z najpopularniejszych celów turystycznych dla Polaków. Wspaniałe miasta jak Nowy Jork, Los Angeles, czy Las Vegas, przepiękne parki narodowe i niezliczone atrakcje turystyczne sprawiają, że podróż do Stanów Zjednoczonych to marzenie wielu osób.
 tags:
-  - jamaica
-  - green beans
-  - flavor
-  - tasting
+  - USA
+  - Wiza
+  - Stany Zjednoczone
+  - Wycieczki
 ---
 
 # Wycieczki do Stanów a wizy dla Polaków

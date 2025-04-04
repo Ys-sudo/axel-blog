@@ -1,10 +1,10 @@
 ---
 templateKey: blog-post
-title: Top 10 destynacji w Europie na podróż 2025
+title: Top 10 destynacji w Europie na podróż w 2025 roku
 date: 2017-01-04T15:04:10.000Z
 featuredpost: false
 featuredimage: /img/chemex.jpg
-description: Brewing with a Chemex probably seems like a complicated, time-consuming ordeal, but once you get used to the process, it becomes a soothing ritual that's worth the effort every time.
+description: Europa zawsze oferuje nieskończone możliwości podróżowania – od tętniących życiem metropolii po malownicze wioski, od historycznych zabytków po nowoczesne atrakcje. Rok 2025 to doskonała okazja, aby odkryć nowe miejsca lub wrócić do tych, które już kiedyś skradły Twoje serce.
 category: Przed podróżą
 tags:
   - brewing

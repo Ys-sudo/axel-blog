@@ -1,6 +1,6 @@
 ---
 templateKey: blog-post
-title: Top 10 destynacji na wczasy w 2025 r
+title: Top 10 destynacji na wczasy w 2025 roku
 date: 2025-04-10T15:04:10.000Z
 featuredpost: false
 featuredimage: /img/chemex.jpg
@@ -12,7 +12,7 @@ tags:
 ---
 ![chemex](/img/chemex.jpg)
 
-# Top 10 destynacji na wczasy w 2025 r
+# Top 10 destynacji na wczasy w 2025 roku
 
 Rok 2025 zapowiada się ekscytująco dla miłośników podróży! Jeśli planujesz wakacje i szukasz inspiracji, przedstawiamy listę 10 destynacji, które warto rozważyć w nadchodzącym roku. Każde z tych miejsc oferuje unikalne atrakcje, kulturę i niezapomniane wrażenia.
 

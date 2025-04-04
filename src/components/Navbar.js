@@ -66,7 +66,7 @@ const Header = () => {
         }}
       >
         <p style={{ color: "white", fontSize: "12px" }}>
-          Axel Travel - Biuro podróży z ponad 30 letnią tradycją
+          <i>Axel Travel - od 34 lat wysyłamy was w świat</i>
         </p>
       </div>
 
@@ -103,22 +103,52 @@ const Header = () => {
                     <strong>Popularne</strong>
                   </li>
                   <li>
-                    <a href="https://axel-travel.pl/turcja/">🇹🇷 Turcja</a>
+                    <a href="https://axel-travel.pl/turcja/">
+                      <span role="img" aria-label="flag">
+                        🇹🇷
+                      </span>{" "}
+                      Turcja
+                    </a>
                   </li>
                   <li>
-                    <a href="https://axel-travel.pl/grecja/">🇬🇷 Grecja</a>
+                    <a href="https://axel-travel.pl/grecja/">
+                      <span role="img" aria-label="flag">
+                        🇬🇷
+                      </span>{" "}
+                      Grecja
+                    </a>
                   </li>
                   <li>
-                    <a href="https://axel-travel.pl/hiszpania/">🇪🇸 Hiszpania</a>
+                    <a href="https://axel-travel.pl/hiszpania/">
+                      <span role="img" aria-label="flag">
+                        🇪🇸
+                      </span>{" "}
+                      Hiszpania
+                    </a>
                   </li>
                   <li>
-                    <a href="https://axel-travel.pl/albania/">🇦🇱 Albania</a>
+                    <a href="https://axel-travel.pl/albania/">
+                      <span role="img" aria-label="flag">
+                        🇦🇱
+                      </span>{" "}
+                      Albania
+                    </a>
                   </li>
                   <li>
-                    <a href="https://axel-travel.pl/egipt/">🇪🇬 Egipt</a>
+                    <a href="https://axel-travel.pl/egipt/">
+                      <span role="img" aria-label="flag">
+                        🇪🇬
+                      </span>{" "}
+                      Egipt
+                    </a>
                   </li>
                   <li>
-                    <a href="https://axel-travel.pl/tunezja/">🇹🇳 Tunezja</a>
+                    <a href="https://axel-travel.pl/tunezja/">
+                      <span role="img" aria-label="flag">
+                        🇹🇳
+                      </span>{" "}
+                      Tunezja
+                    </a>
                   </li>
                 </ul>
                 <ul>

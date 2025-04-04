@@ -45,11 +45,11 @@ export const IndexPageTemplate = ({
               {mainpitch.description}
             </h2>
           </div>
-          <div className="text-center mt-8">
+          <div className="text-center -mt-6">
             <h3 className="text-4xl font-bold text-blue-600 dark:text-blue-400">
               {heading}
             </h3>
-            <p className="text-lg text-gray-700 dark:text-gray-300 mt-4">
+            <p className="max-w-5xl mx-auto text-lg text-gray-700 dark:text-gray-300 mt-4">
               {description}
             </p>
           </div>
