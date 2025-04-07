@@ -10,16 +10,18 @@ export const BlogRollTemplate = ({ posts }) => {
         posts.map(({ node: post }) => (
           <div
             key={post.id}
-            className="bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl hover:translate-y-2"
+            className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden transform transition-all hover:scale-[1.03] hover:shadow-2xl hover:-translate-y-1"
           >
             <article
-              className={`p-6 ${
-                post.frontmatter.featuredpost ? "border-l-4 border-primary" : ""
-              } bg-white dark:bg-gray-900 transition-all rounded-xl`}
+              className={`p-6 transition-all rounded-2xl ${
+                post.frontmatter.featuredpost
+                  ? "border-top-l-4 borde-top-blue-500"
+                  : ""
+              } bg-white dark:bg-gray-900`}
             >
               <header>
                 {post?.frontmatter?.featuredimage && (
-                  <div className="relative w-full h-48 mb-6 overflow-hidden rounded-lg shadow-md">
+                  <div className="relative w-full h-48 mb-6 overflow-hidden rounded-xl shadow-sm">
                     <PreviewCompatibleImage
                       imageInfo={{
                         image: post.frontmatter.featuredimage,
@@ -34,25 +36,26 @@ export const BlogRollTemplate = ({ posts }) => {
                     />
                   </div>
                 )}
-                <p className="text-gray-800 dark:text-white">
+                <div className="flex flex-wrap items-center text-gray-800 dark:text-white">
                   <Link
-                    className="text-2xl font-bold text-primary dark:text-primary-light hover:text-primary-dark transition-all"
+                    className="text-2xl font-bold text-blue-600 dark:text-blue-400 hover:text-blue-800 transition-colors"
                     to={post.fields.slug}
                   >
                     {post.frontmatter.title}
                   </Link>
-                  <span className="mx-2">•</span>
+                  <span className="mx-2 text-gray-400">•</span>
                   <span className="text-sm text-gray-600 dark:text-gray-400">
                     {post.frontmatter.date}
                   </span>
-                </p>
+                </div>
               </header>
-              <p className="text-gray-700 dark:text-gray-300 mt-4 text-base leading-relaxed">
+
+              <p className="mt-4 text-gray-700 dark:text-gray-300 text-base leading-relaxed">
                 {post.excerpt}
                 <br />
                 <br />
                 <Link
-                  className="inline-block text-primary dark:text-primary-light hover:text-primary-dark font-medium transition-all"
+                  className="inline-block text-blue-600 dark:text-blue-400 hover:text-blue-800 font-medium transition-colors"
                   to={post.fields.slug}
                 >
                   Przeczytaj artykuł →
@@ -94,7 +97,7 @@ export default function BlogRoll(props) {
                 frontmatter {
                   title
                   templateKey
-                  date(formatString: "MMMM DD, YYYY")
+                  date(formatString: "DD.MM.YYYY")
                   featuredpost
                   featuredimage {
                     childImageSharp {

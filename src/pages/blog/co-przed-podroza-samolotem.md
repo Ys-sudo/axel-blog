@@ -2,7 +2,7 @@
 templateKey: 'blog-post'
 title: 'Porady przed podróżą samolotem'
 date: 2025-04-07T15:04:10.000Z
-featuredimage: /img/blog-index.jpg
+featuredimage: /img/co-przed-podroza-samolotem.jpg
 featuredpost: true
 category: Porady
 description: >-
@@ -13,6 +13,7 @@ tags:
   - Przygotowania
   - Loty
 ---
+![Co przed samolotem](/img/co-przed-podroza-samolotem.jpg)
 
 # Porady przed podróżą samolotem
 

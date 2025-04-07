@@ -3,7 +3,7 @@ templateKey: blog-post
 title: Top 10 destynacji w Europie na podróż w 2025 roku
 date: 2017-01-04T15:04:10.000Z
 featuredpost: false
-featuredimage: /img/chemex.jpg
+featuredimage: /img/top-10-destynacji-w-europie-2025.jpg
 description: Europa zawsze oferuje nieskończone możliwości podróżowania – od tętniących życiem metropolii po malownicze wioski, od historycznych zabytków po nowoczesne atrakcje. Rok 2025 to doskonała okazja, aby odkryć nowe miejsca lub wrócić do tych, które już kiedyś skradły Twoje serce.
 category: Przed podróżą
 tags:

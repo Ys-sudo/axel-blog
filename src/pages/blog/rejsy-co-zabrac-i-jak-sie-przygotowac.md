@@ -2,7 +2,7 @@
 templateKey: 'blog-post'
 title: 'Rejsy, co zabrać i jak się przygotować'
 date: 2025-04-04T15:04:10.000Z
-featuredimage: /img/blog-index.jpg
+featuredimage: /img/rejsy-co-zabrac-jak-sie-przygotowac.jpg
 featuredpost: true
 category: Porady
 description: >-

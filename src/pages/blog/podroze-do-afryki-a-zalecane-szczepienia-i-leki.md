@@ -3,14 +3,14 @@ templateKey: blog-post
 title: Podróże do Afryki a zalecane szczepienia i leki
 date: 2025-04-08T15:04:10.000Z
 featuredpost: false
-featuredimage: /img/chemex.jpg
+featuredimage: /img/szczepienia-afryka.jpg
 description: Afryka, mimo że jest jednym z najpiękniejszych miejsc do zwiedzania, może wiązać się z ryzykiem zachorowań na choroby zakaźne, które w Europie są rzadko spotykane. W tym artykule dowiesz się, jakie szczepienia i leki warto wziąć pod uwagę przed podróżą na Czarny Ląd.
 category: Przed podróżą
 tags:
   - brewing
   - chemex
 ---
-![chemex](/img/chemex.jpg)
+![Afryka](/img/szczepienia-afryka.jpg)
 
 # Podróże do Afryki a zalecane szczepienia i leki
 

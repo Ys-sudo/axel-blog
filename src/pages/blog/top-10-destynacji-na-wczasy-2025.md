@@ -3,7 +3,7 @@ templateKey: blog-post
 title: Top 10 destynacji na wczasy w 2025 roku
 date: 2025-04-10T15:04:10.000Z
 featuredpost: false
-featuredimage: /img/chemex.jpg
+featuredimage: /img/top-10-destynacji-na-wakacje-2025.jpg
 description: Brewing with a Chemex probably seems like a complicated, time-consuming ordeal, but once you get used to the process, it becomes a soothing ritual that's worth the effort every time.
 category: Przed podróżą
 tags:

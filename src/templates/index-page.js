@@ -28,13 +28,14 @@ export const IndexPageTemplate = ({
   const isFirst = currentPage === 1;
   const isLast = currentPage === numPages;
   // For the index page, adjust the link for the first page appropriately.
-  const prevPage = currentPage - 1 === 1 ? "/" : `/${currentPage - 1}`;
-  const nextPage = `/${currentPage + 1}`;
+  const prevPage =
+    currentPage - 1 === 1 ? "/#articles" : `/${currentPage - 1}#articles`;
+  const nextPage = `/${currentPage + 1}#articles`;
 
   return (
     <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
       <FullWidthImage img={heroImage} title={title} subheading={subheading} />
-      <BlogSection />
+
       <section className="py-16 px-6 md:px-12">
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
@@ -54,7 +55,7 @@ export const IndexPageTemplate = ({
             </p>
           </div>
 
-          <div className="mt-16">
+          <div id="#articles" className="pt-16">
             <h3 className="text-4xl font-bold text-gray-900 dark:text-gray-100 text-center mb-8">
               Najnowsze artykuły
             </h3>
@@ -77,7 +78,7 @@ export const IndexPageTemplate = ({
                       ? "bg-blue-600 text-white"
                       : "bg-gray-200 hover:bg-gray-300"
                   }`}
-                  to={i === 0 ? "/" : `/${i + 1}`}
+                  to={i === 0 ? "/#articles" : `/${i + 1}#articles`}
                 >
                   {i + 1}
                 </Link>
@@ -100,6 +101,7 @@ export const IndexPageTemplate = ({
               </Link>
             </div>
           </div>
+          <BlogSection />
           <GreekIslandsSlider />
           {/*<Features gridItems={intro.blurbs} />*/}
         </div>

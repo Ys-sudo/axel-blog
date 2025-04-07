@@ -2,7 +2,7 @@
 templateKey: 'blog-post'
 title: 'Co załatwić przed podróżą do Tajlandii?'
 date: 2025-04-06T15:04:10.000Z
-featuredimage: /img/blog-index.jpg
+featuredimage: /img/co-zalatwic-przed-podroza-do-tajlandii.jpg
 featuredpost: true
 category: Przed podróżą
 description: >-
