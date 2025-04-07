@@ -204,7 +204,7 @@ export const pageQuery = graphql`
           }
           frontmatter {
             title
-            date(formatString: "MMMM DD, YYYY")
+            date(formatString: "DD.MM.YYYY")
             featuredpost
             featuredimage {
               childImageSharp {
