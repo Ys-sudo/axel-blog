@@ -10,7 +10,7 @@ tags:
   - brewing
   - chemex
 ---
-![chemex](/img/chemex.jpg)
+![chemex](/img/wycieczka-do-stanow.jpg)
 
 # Top 10 destynacji w Europie na podróż 2025
 

@@ -66,7 +66,10 @@ const Header = () => {
         }}
       >
         <p style={{ color: "white", fontSize: "12px" }}>
-          <i>Axel Travel - od 34 lat wysyłamy was w świat</i>
+          <i>
+            Axel Travel - od <span id="m-year">34</span> lat wysyłamy was w
+            świat
+          </i>
         </p>
       </div>
 
@@ -104,9 +107,7 @@ const Header = () => {
                   </li>
                   <li>
                     <a href="https://axel-travel.pl/turcja/">
-                      <span role="img" aria-label="flag">
-                        🇹🇷
-                      </span>{" "}
+                      <img src="/img/flags/trucja.jpg" />
                       Turcja
                     </a>
                   </li>

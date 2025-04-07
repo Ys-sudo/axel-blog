@@ -3,7 +3,7 @@ templateKey: blog-post
 title: Odkryj tajemnice Teneryfy – raj na Wyspach Kanaryjskich
 date: 2025-04-04T15:04:10.000Z
 featuredpost: false
-featuredimage: /img/flavor_wheel.jpg
+featuredimage: /img/blog-index.jpg
 category: Reportaże z podróży
 description: Teneryfa to wyspa, która od lat przyciąga turystów z całego świata. Ciepły klimat, piękne plaże, wulkaniczne krajobrazy i tętniące życiem miasta sprawiają, że jest to miejsce, które warto odwiedzić przynajmniej raz w życiu.
 tags:

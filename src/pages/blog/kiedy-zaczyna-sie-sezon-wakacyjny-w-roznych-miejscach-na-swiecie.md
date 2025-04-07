@@ -2,7 +2,7 @@
 templateKey: 'blog-post'
 title: 'Kiedy zaczyna się sezon wakacyjny w różnych miejscach na świecie?'
 date: 2025-04-09T15:04:10.000Z
-featuredimage: /img/products-grid1.jpg
+featuredimage: /img/blog-index.jpg
 featuredpost: true
 category: Porady
 description: >-

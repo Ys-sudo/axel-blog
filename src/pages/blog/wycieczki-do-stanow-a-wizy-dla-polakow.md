@@ -2,7 +2,7 @@
 templateKey: 'blog-post'
 title: 'Wycieczki do Stanów a wizy dla Polaków'
 date: 2017-01-04T15:04:10.000Z
-featuredimage: /img/products-grid1.jpg
+featuredimage: /img/wycieczka-do-stanow.jpg
 featuredpost: true
 category: Bagaż i dokumenty
 description: >-
@@ -13,6 +13,8 @@ tags:
   - Stany Zjednoczone
   - Wycieczki
 ---
+
+![chemex](/img/wycieczka-do-stanow.jpg)
 
 # Wycieczki do Stanów a wizy dla Polaków
 

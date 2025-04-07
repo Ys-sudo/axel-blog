@@ -2,7 +2,7 @@
 templateKey: 'blog-post'
 title: 'Wycieczka na safari, co warto wiedzieć?'
 date: 2025-04-01T15:04:10.000Z
-featuredimage: /img/products-grid1.jpg
+featuredimage: /img/blog-index.jpg
 featuredpost: true
 category: Porady
 description: >-
