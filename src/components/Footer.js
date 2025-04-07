@@ -252,7 +252,7 @@ const Footer = () => {
           | <a href="https://axel-travel.pl/cookies/">Cookies</a> |{" "}
           <a href="https://axel-travel.pl/regulamin/">Regulamin</a>
           <br /> <br />
-          &copy; 1991- <span id="year"></span>{" "}
+          &copy; 1991&nbsp;- <span id="year"></span>{" "}
           <a
             style={{ color: "white", textDecoration: "underline" }}
             href="https://axel-travel.pl"

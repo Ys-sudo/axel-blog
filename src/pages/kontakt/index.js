@@ -38,7 +38,7 @@ export default class Index extends React.Component {
                   config={{
                     theme: "dark",
                     styles: { branding: { brandColor: "#000000" } },
-                    hideEventTypeDetails: false,
+                    hideEventTypeDetails: true,
                     layout: "month_view",
                   }}
                 ></Cal>

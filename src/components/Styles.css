@@ -131,7 +131,10 @@ body {
   color: black;
   font-size: 12px;
   padding: 8px 10px;
-  display: block;
+  display: flex;
+}
+.submenu li img {
+  margin-right: 5px;
 }
 .submenu li strong {
   font-size: 12px;

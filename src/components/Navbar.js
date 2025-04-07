@@ -107,47 +107,45 @@ const Header = () => {
                   </li>
                   <li>
                     <a href="https://axel-travel.pl/turcja/">
-                      <img src="/img/flags/trucja.jpg" />
+                      <img width="20" height="18" src="/img/flags/turcja.jpg" />
                       Turcja
                     </a>
                   </li>
                   <li>
                     <a href="https://axel-travel.pl/grecja/">
-                      <span role="img" aria-label="flag">
-                        🇬🇷
-                      </span>{" "}
+                      <img width="20" height="18" src="/img/flags/grecja.jpg" />
                       Grecja
                     </a>
                   </li>
                   <li>
                     <a href="https://axel-travel.pl/hiszpania/">
-                      <span role="img" aria-label="flag">
-                        🇪🇸
-                      </span>{" "}
+                      <img width="20" height="18" src="/img/flags/spain.jpg" />
                       Hiszpania
                     </a>
                   </li>
                   <li>
                     <a href="https://axel-travel.pl/albania/">
-                      <span role="img" aria-label="flag">
-                        🇦🇱
-                      </span>{" "}
+                      <img
+                        width="20"
+                        height="18"
+                        src="/img/flags/albania.jpg"
+                      />
                       Albania
                     </a>
                   </li>
                   <li>
                     <a href="https://axel-travel.pl/egipt/">
-                      <span role="img" aria-label="flag">
-                        🇪🇬
-                      </span>{" "}
+                      <img width="20" height="18" src="/img/flags/egipt.jpg" />
                       Egipt
                     </a>
                   </li>
                   <li>
                     <a href="https://axel-travel.pl/tunezja/">
-                      <span role="img" aria-label="flag">
-                        🇹🇳
-                      </span>{" "}
+                      <img
+                        width="20"
+                        height="18"
+                        src="/img/flags/tunezja.jpg"
+                      />
                       Tunezja
                     </a>
                   </li>
@@ -158,23 +156,43 @@ const Header = () => {
                   </li>
                   <li>
                     <a href="https://axel-travel.pl/wyspy-kanaryjskie/">
-                      🇪🇸 Wyspy Kanaryjskie
+                      <img width="20" height="18" src="/img/flags/spain.jpg" />{" "}
+                      Wyspy Kanaryjskie
                     </a>
                   </li>
                   <li>
-                    <a href="https://axel-travel.pl/madera/">🇵🇹 Madera</a>
+                    <a href="https://axel-travel.pl/madera/">
+                      <img width="20" height="18" src="/img/flags/madera.jpg" />
+                      Madera
+                    </a>
                   </li>
                   <li>
-                    <a href="https://axel-travel.pl/malta/">🇲🇹 Malta</a>
+                    <a href="https://axel-travel.pl/malta/">
+                      <img width="20" height="18" src="/img/flags/malta.jpg" />{" "}
+                      Malta
+                    </a>
                   </li>
                   <li>
-                    <a href="https://axel-travel.pl/cypr/">🇨🇾 Cypr</a>
+                    <a href="https://axel-travel.pl/cypr/">
+                      <img width="20" height="18" src="/img/flags/cypr.jpg" />{" "}
+                      Cypr
+                    </a>
                   </li>
                   <li>
-                    <a href="https://axel-travel.pl/wlochy/">🇮🇹 Włochy</a>
+                    <a href="https://axel-travel.pl/wlochy/">
+                      <img width="20" height="18" src="/img/flags/wlochy.jpg" />
+                      Włochy
+                    </a>
                   </li>
                   <li>
-                    <a href="https://axel-travel.pl/bulgaria/">🇧🇬 Bułgaria</a>
+                    <a href="https://axel-travel.pl/bulgaria/">
+                      <img
+                        width="20"
+                        height="18"
+                        src="/img/flags/bulgaria.jpg"
+                      />{" "}
+                      Bułgaria
+                    </a>
                   </li>
                 </ul>
                 <ul>
@@ -182,24 +200,56 @@ const Header = () => {
                     <strong>Egzotyka</strong>
                   </li>
                   <li>
-                    <a href="https://axel-travel.pl/tajlandia/">🇹🇭 Tajlandia</a>
-                  </li>
-                  <li>
-                    <a href="https://axel-travel.pl/wietnam/">🇻🇳 Wietnam</a>
-                  </li>
-                  <li>
-                    <a href="https://axel-travel.pl/malezja/">🇲🇾 Malezja</a>
-                  </li>
-                  <li>
-                    <a href="https://axel-travel.pl/meksyk/">🇲🇽 Meksyk</a>
-                  </li>
-                  <li>
-                    <a href="https://axel-travel.pl/dominikana/">
-                      🇩🇴 Dominikana
+                    <a href="https://axel-travel.pl/tajlandia/">
+                      <img
+                        width="20"
+                        height="18"
+                        src="/img/flags/tajlandia.jpg"
+                      />
+                      Tajlandia
                     </a>
                   </li>
                   <li>
-                    <a href="https://axel-travel.pl/oman/">🇴🇲 Oman</a>
+                    <a href="https://axel-travel.pl/wietnam/">
+                      <img
+                        width="20"
+                        height="18"
+                        src="/img/flags/wietnam.jpg"
+                      />
+                      Wietnam
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/malezja/">
+                      <img
+                        width="20"
+                        height="18"
+                        src="/img/flags/malezja.jpg"
+                      />
+                      Malezja
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/meksyk/">
+                      <img width="20" height="18" src="/img/flags/meksyk.jpg" />{" "}
+                      Meksyk
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/dominikana/">
+                      <img
+                        width="20"
+                        height="18"
+                        src="/img/flags/dominikana.jpg"
+                      />{" "}
+                      Dominikana
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://axel-travel.pl/oman/">
+                      <img width="20" height="18" src="/img/flags/oman.jpg" />{" "}
+                      Oman
+                    </a>
                   </li>
                 </ul>
               </div>
