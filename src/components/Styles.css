@@ -190,7 +190,7 @@ body {
 
 .monogram-button:hover {
   background: black;
-  transition-duration: 0.5s;
+  transition-duration: 0.2s;
 }
 
 .monogram-button:hover > img {
@@ -609,4 +609,11 @@ a.action-button:hover {
   footer > div.footer-container > div:nth-child(1) > a > img {
     margin-bottom: 20px !important;
   }
+}
+
+.monogram-button {
+  border-radius: 5px;
+}
+.submenu {
+  border-radius: 10px;
 }
