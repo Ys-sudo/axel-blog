@@ -612,8 +612,8 @@ a.action-button:hover {
 }
 
 .monogram-button {
-  border-radius: 5px;
+  border-radius: 5px !important;
 }
 .submenu {
-  border-radius: 10px;
+  border-radius: 10px !important;
 }
