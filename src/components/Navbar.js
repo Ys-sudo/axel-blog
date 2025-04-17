@@ -65,11 +65,24 @@ const Header = () => {
           zIndex: 1000,
         }}
       >
-        <p style={{ color: "white", fontSize: "12px" }}>
+        <p style={{ color: "white", fontSize: "12px", display: "flex" }}>
+          <img
+            src="https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/PLANET.jpg?v=1744874865340"
+            alt="podróże po świecie"
+            width="20"
+            height="20"
+            style={{ marginRight: "5px" }}
+          />
           <i>
-            Axel Travel - od <span id="m-year">34</span> lat wysyłamy was w
-            świat
+            Wysyłamy was w świat od <span id="m-year">34</span> lat!
           </i>
+          <img
+            src="https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/PLANE.jpg?v=1744874840269"
+            alt="podróże samolotem"
+            width="20"
+            height="20"
+            style={{ margiRleft: "5px" }}
+          />
         </p>
       </div>
 
@@ -384,7 +397,7 @@ const Header = () => {
               <div className={`submenu ${submenusVisible[2] ? "show" : ""}`}>
                 <ul>
                   <li>
-                    <a href="https://axel-travel.pl/o-nas/#ubezpieczenia">
+                    <a href="https://axel-travel.pl/ubezpieczenia/">
                       Ubezpieczenia
                     </a>
                   </li>

@@ -65,7 +65,7 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="https://axel-travel.pl/o-nas/#ubezpieczenia">
+                <a href="https://axel-travel.pl/ubezpieczenia/">
                   Ubezpieczenia
                 </a>
               </li>
@@ -212,6 +212,7 @@ const Footer = () => {
               <li>
                 <a href="tel:+48 76 846 67 66">+48 76 846 67 66</a>
               </li>
+              <li>NIP: 6920203756</li>
             </ul>
           </div>
         </div>
@@ -246,17 +247,17 @@ const Footer = () => {
         </div>
       </footer>
 
-      <div className="footer-bottom" style={{ padding: "20px" }}>
+      <div
+        className="footer-bottom"
+        style={{ padding: "20px", paddingTop: "10px" }}
+      >
         <p style={{ fontSize: "12px" }}>
           <a href="https://axel-travel.pl/privacyrodo/">Polityka prywatności</a>{" "}
           | <a href="https://axel-travel.pl/cookies/">Cookies</a> |{" "}
           <a href="https://axel-travel.pl/regulamin/">Regulamin</a>
-          <br /> <br />
+          <div style={{ marginTop: "10px" }}></div>
           &copy; 1991&nbsp;- <span id="year"></span>{" "}
-          <a
-            style={{ color: "white", textDecoration: "underline" }}
-            href="https://axel-travel.pl"
-          >
+          <a style={{ color: "white" }} href="https://axel-travel.pl">
             Axel Travel Biuro Podróży
           </a>{" "}
           - wszelkie prawa zastrzeżone
