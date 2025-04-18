@@ -28,6 +28,18 @@ collections:
           default: "blog-post",
         }
       - { label: "Title", name: "title", widget: "string" }
+      - {
+          label: "Category",
+          name: "title",
+          widget: "select",
+          options:
+            [
+              "Porady",
+              "Reportaże z podróży",
+              "Bagaż i dokumenty",
+              "Przed podróżą",
+            ],
+        }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Description", name: "description", widget: "text" }
       - { label: "Featured Post", name: "featuredpost", widget: "boolean" }

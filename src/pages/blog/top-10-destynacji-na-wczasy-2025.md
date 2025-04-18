@@ -4,7 +4,7 @@ title: Top 10 destynacji na wczasy w 2025 roku
 date: 2025-04-10T15:04:10.000Z
 featuredpost: false
 featuredimage: /img/top-10-destynacji-na-wakacje-2025.jpg
-description: Brewing with a Chemex probably seems like a complicated, time-consuming ordeal, but once you get used to the process, it becomes a soothing ritual that's worth the effort every time.
+description: Rok 2025 zapowiada się ekscytująco dla miłośników podróży! Jeśli planujesz wakacje i szukasz inspiracji, przedstawiamy listę 10 destynacji, które warto rozważyć w nadchodzącym roku. Każde z tych miejsc oferuje unikalne atrakcje, kulturę i niezapomniane wrażenia.
 category: Przed podróżą
 tags:
   - brewing

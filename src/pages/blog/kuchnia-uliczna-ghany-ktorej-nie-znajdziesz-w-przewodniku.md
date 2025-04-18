@@ -1,6 +1,7 @@
 ---
 templateKey: blog-post
 title: Kuchnia uliczna Ghany, której nie znajdziesz w przewodniku
+category: Reportaże z podróży
 date: 2025-04-17T17:33:00.000Z
 description: Odkryj mało znane ghanijskie przysmaki uliczne – od pikantnych
   kelewele po słodkie bofrot. Kompleksowy przewodnik z porównaniami

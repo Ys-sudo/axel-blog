@@ -1,6 +1,7 @@
 ---
 templateKey: blog-post
 title: Kuchnia grecka, której nie znajdziesz w przewodniku
+category: Reportaże z podróży
 date: 2025-04-17T18:36:00.000Z
 description: Kiedy myślimy o greckiej kuchni, przed oczami stają nam souvlaki,
   musaka czy sałatka grecka. Jednak prawdziwe oblicze greckiej kulinarnej
@@ -14,7 +15,7 @@ tags:
   - streetfood
   - souvlaki
 ---
-Kiedy myślimy o greckiej kuchni, przed oczami stają nam souvlaki, musaka czy sałatka grecka. Jednak prawdziwe oblicze greckiej kulinarnej tradycji kryje się poza folderami biur podróży i poza typowymi tawernami przy głównych promenadach. **To właśnie ta kuchnia – lokalna, sezonowa i głęboko zakorzeniona w historii regionu – jest sercem prawdziwej Grecji.** Poznaj smaki, których nie znajdziesz w przewodnikach, a które zaskoczą Cię swoją autentycznością i głębią. 
+Kiedy myślimy o greckiej kuchni, przed oczami stają nam souvlaki, musaka czy sałatka grecka. Jednak prawdziwe oblicze greckiej kulinarnej tradycji kryje się poza folderami biur podróży i poza typowymi tawernami przy głównych promenadach. **To właśnie ta kuchnia – lokalna, sezonowa i głęboko zakorzeniona w historii regionu – jest sercem prawdziwej Grecji.** Poznaj smaki, których nie znajdziesz w przewodnikach, a które zaskoczą Cię swoją autentycznością i głębią.
 
 ![Greckie souvlaki](/img/souvlaki-gree-street-food.jpg "Souvlaki")
 
@@ -71,7 +72,7 @@ Epir to region górski, gdzie klimat wymuszał bardziej sycącą kuchnię. Tam w
 
 ## Dlaczego autentyczna kuchnia grecka zyskuje na wartości?
 
-**W świecie pełnym uproszczeń i fast foodów, powrót do korzeni staje się luksusem.** Autentyczna kuchnia grecka, nieprzekłamana przez turystykę masową, opowiada historię miejsca – jego ziemi, ludzi, sezonów i zwyczajów. 
+**W świecie pełnym uproszczeń i fast foodów, powrót do korzeni staje się luksusem.** Autentyczna kuchnia grecka, nieprzekłamana przez turystykę masową, opowiada historię miejsca – jego ziemi, ludzi, sezonów i zwyczajów.
 
 To także odpowiedź na rosnącą potrzebę *slow travel* – podróży, które pozwalają zrozumieć, a nie tylko „zaliczyć”. Bo właśnie w kuchni – tej domowej, niepozornej, często nieefektownej – kryje się najwięcej o greckiej duszy.
 
