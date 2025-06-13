@@ -67,7 +67,7 @@ const Header = () => {
       >
         <p style={{ color: "white", fontSize: "12px", display: "flex" }}>
           <img
-            src="https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/PLANET.jpg?v=1744874865340"
+            src="https://axel-travel.pro/img/PLANET.jpg"
             alt="podróże po świecie"
             width="20"
             height="20"
@@ -77,7 +77,7 @@ const Header = () => {
             Wysyłamy was w świat od <span id="m-year">34</span> lat!
           </i>
           <img
-            src="https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/PLANE.jpg?v=1744874840269"
+            src="https://axel-travel.pro/img/PLANE.jpg"
             alt="podróże samolotem"
             width="20"
             height="20"
@@ -90,7 +90,7 @@ const Header = () => {
         <div className="logo">
           <a href="https://axel-travel.pl/">
             <img
-              src="https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/axel-travel-logo.png?v=1743012468506"
+              src="https://axel-travel.pro/img/axel-travel-logo.png"
               alt="Logo"
             />
           </a>
@@ -433,7 +433,7 @@ const Header = () => {
                 <img
                   width="15"
                   height="15"
-                  src="https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/globe.svg?v=1743502353565"
+                  src="https://axel-travel.pro/img/globe.svg"
                   alt="Globe"
                 />
               </div>
@@ -447,7 +447,7 @@ const Header = () => {
                 <img
                   width="15"
                   height="15"
-                  src="https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/plane.svg?v=1743502350085"
+                  src="https://axel-travel.pro/img/plane.svg"
                   alt="Plane"
                 />
               </div>
@@ -457,7 +457,7 @@ const Header = () => {
                 <img
                   width="15"
                   height="15"
-                  src="https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/mobile.svg?v=1743502347151"
+                  src="https://axel-travel.pro/img/mobile.svg"
                   alt="Phone"
                 />
               </div>
@@ -467,7 +467,7 @@ const Header = () => {
                 <img
                   width="15"
                   height="15"
-                  src="https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/e-mail.svg?v=1743502339789"
+                  src="https://axel-travel.pro/img/e-mail.svg"
                   alt="Email"
                 />
               </div>
@@ -481,7 +481,7 @@ const Header = () => {
                 <img
                   width="15"
                   height="15"
-                  src="https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/tiktok-b.svg?v=1743759109100"
+                  src="https://axel-travel.pro/img/tiktok-b.svg"
                   alt="TikTok"
                 />
               </div>
@@ -495,7 +495,7 @@ const Header = () => {
                 <img
                   width="15"
                   height="15"
-                  src="https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/instagram-b.svg?v=1743759131753"
+                  src="https://axel-travel.pro/img/instagram-b.svg"
                   alt="Instagram"
                 />
               </div>

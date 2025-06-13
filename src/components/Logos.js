@@ -3,38 +3,32 @@ import React, { useEffect, useRef } from "react";
 const items = [
   {
     link: "https://axel-travel.pl/itaka/",
-    image:
-      "https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/itaka.jpg?v=1743016261768",
+    image: "https://axel-travel.pro/img/itaka.jpg",
     alt: "Itaka",
   },
   {
     link: "https://axel-travel.pl/rainbow/",
-    image:
-      "https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/rainbow-tours.jpg?v=1743016374298",
+    image: "https://axel-travel.pro/img/rainbow-tours.jpg",
     alt: "Rainbow",
   },
   {
     link: "#",
-    image:
-      "https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/join-up.png?v=1743016376587",
+    image: "https://axel-travel.pro/img/join-up.png",
     alt: "Join up",
   },
   {
     link: "https://axel-travel.pl/grecos/",
-    image:
-      "https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/grecos.jpg?v=1743016379060",
+    image: "https://axel-travel.pro/img/grecos.jpg",
     alt: "Grecos",
   },
   {
     link: "https://axel-travel.pl/anex/",
-    image:
-      "https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/anex-tour-poland.png?v=1743016380937",
+    image: "https://axel-travel.pro/img/anex-tour-poland.png",
     alt: "Anex",
   },
   {
     link: "https://axel-travel.pl/coral-travel/",
-    image:
-      "https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/coral.jpg?v=1743016382845",
+    image: "https://axel-travel.pro/img/coral.jpg",
     alt: "Coral Travel",
   },
 ];

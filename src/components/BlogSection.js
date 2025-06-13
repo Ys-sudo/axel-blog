@@ -13,24 +13,21 @@ const BlogSection = () => {
       name: "Reportaże",
       description:
         "Reportaże z wyjątkowych miejsc – relacje z podróży z filmami i opiniami naszych agentów oraz klientów.",
-      image:
-        "https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/reportaze-z-podrozy.jpg?v=1743033849944",
+      image: "https://axel-travel.pro/img/reportaze-z-podrozy.jpg",
       link: "/kategoria/reportaze-z-podrozy/",
     },
     {
       name: "Bagaże i dokumenty",
       description:
         "Wszystko, co musisz wiedzieć o dokumentach i bagażu – praktyczne, przydatne informacje.",
-      image:
-        "https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/bagaze-i-dokumenty.jpg?v=1743033853029",
+      image: "https://axel-travel.pro/img/bagaze-i-dokumenty.jpg",
       link: "/kategoria/bagaz-i-dokumenty/",
     },
     {
       name: "Przed podróżą",
       description:
         "Przygotuj się na wyprawę w nieznane – sprawdź nasze rekomendacje i wskazówki!",
-      image:
-        "https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/przed-podroza.jpg?v=1743033847149",
+      image: "https://axel-travel.pro/img/przed-podroza.jpg",
       link: "/kategoria/przed-podroza/",
     },
   ];

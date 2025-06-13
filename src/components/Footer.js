@@ -18,7 +18,7 @@ const Footer = () => {
           width: "100%",
           marginBottom: "-15px",
         }}
-        src="https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/footer-top.jpg?v=1743028178022"
+        src="https://axel-travel.pro/img/footer-top.jpg"
         alt="Footer top"
       />
       <footer className="footer" style={{ paddingTop: "40px" }}>
@@ -26,7 +26,7 @@ const Footer = () => {
           <div className="footer-column">
             <a href="https://axel-travel.pl">
               <img
-                src="https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/axel-travel-logo.png?v=1743012468506"
+                src="https://axel-travel.pro/img/axel-travel-logo.png"
                 alt="Company Logo"
                 className="footer-logo"
                 style={{
@@ -226,7 +226,7 @@ const Footer = () => {
           >
             <img
               alt="Axel travel tiktok"
-              src="https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/tiktok.svg?v=1743521559456"
+              src="https://axel-travel.pro/img/tiktok.svg"
               width="25"
               height="25"
             />
@@ -239,7 +239,7 @@ const Footer = () => {
           >
             <img
               alt="Axel travel instagram"
-              src="https://cdn.glitch.global/6061b827-3701-4087-a4b1-a1aec1d09302/instagram.svg?v=1743521567193"
+              src="https://axel-travel.pro/img/instagram.svg"
               width="25"
               height="25"
             />

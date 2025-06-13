@@ -73,6 +73,13 @@ module.exports = {
             },
           },
         ],
+        // this is key:
+        // set `allowDangerousHtml` on *both* top level and plugin level
+        allowDangerousHtml: true,
+        remarkOptions: {
+          // this ensures HTML is parsed as raw HTML
+          allowDangerousHtml: true,
+        },
       },
     },
     {
