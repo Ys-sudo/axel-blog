@@ -226,9 +226,10 @@ const Footer = () => {
           >
             <img
               alt="Axel travel tiktok"
-              src="https://axel-travel.pro/img/tiktok.svg"
+              src="https://axel-travel.pro/img/tiktok-b.svg"
               width="25"
               height="25"
+              style={{ filter: "invert(1)" }}
             />
           </a>
           <a
@@ -239,9 +240,10 @@ const Footer = () => {
           >
             <img
               alt="Axel travel instagram"
-              src="https://axel-travel.pro/img/instagram.svg"
+              src="https://axel-travel.pro/img/instagram-b.svg"
               width="25"
               height="25"
+              style={{ filter: "invert(1)" }}
             />
           </a>
         </div>
