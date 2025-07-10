@@ -233,7 +233,7 @@ const Footer = () => {
             />
           </a>
           <a
-            href="https://www.instagram.com/axel.travel.pl"
+            href="https://www.instagram.com/axeltravel.pl"
             className="social-icon"
             target="_blank"
             rel="noopener noreferrer"

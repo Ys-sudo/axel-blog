@@ -489,7 +489,7 @@ const Header = () => {
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href="https://www.instagram.com/axel.travel.pl"
+              href="https://www.instagram.com/axeltravel.pl"
             >
               <div className="monogram-button">
                 <img
