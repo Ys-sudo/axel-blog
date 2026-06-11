@@ -6,7 +6,7 @@ const BlogSection = () => {
       name: "Porady",
       description:
         "Praktyczne porady dla podróżujących za granicę, sprawdzone wskazówki i polecane miejsca.",
-      image: "https://axeltravel.pro/img/peru.jpg",
+      image: "https://axel-travel.pro/img/peru.jpg",
       link: "/kategoria/porady/",
     },
     {
