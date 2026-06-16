@@ -29,25 +29,12 @@ export default class Index extends React.Component {
           />
           <section className="py-10">
             <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-24 flex flex-col md:flex-row gap-10">
-              {/*<div className="md:w-1/2">
-                <h4 className="text-lg font-bold">Umów się na rozmowę</h4>
-                <h4 className="mb-6">Porozmawiaj z naszym agentem!</h4>
-
-                <Cal
-                  calLink="axel-travel-tmln7g/30min"
-                  config={{
-                    theme: "dark",
-                    styles: { branding: { brandColor: "#000000" } },
-                    hideEventTypeDetails: true,
-                    layout: "month_view",
-                  }}
-                ></Cal>
-              </div>*/}
-
               <div className="md:w-1/2">
                 <h4 className="text-lg font-bold">Formularz kontaktowy</h4>
                 <h4 className="mb-6">Wyślij nam wiadomość!</h4>
                 <ContactForm />
+              </div>
+              <div className="md:w-1/2">
                 <h4 className="mt-6 mb-4">Kontakt mailowy lub telefoniczny:</h4>
                 <div className="space-y-4">
                   <a
