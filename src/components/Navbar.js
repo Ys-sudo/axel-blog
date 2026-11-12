@@ -74,7 +74,7 @@ const Header = () => {
             style={{ marginRight: "5px" }}
           />
           <i>
-            Wysyłamy was w świat od <span id="m-year">34</span> lat!
+            Wysyłamy was w świat od <strong><span id="m-year">35</span></strong> lat!
           </i>
           <img
             src="https://axel-travel.pro/img/PLANE.jpg"
